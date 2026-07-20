@@ -4,18 +4,22 @@ import Script from "next/script";
 import "./globals.css";
 
 
+const siteUrl = "https://northsky-reviews.vercel.app";
+
+
 export const metadata: Metadata = {
 
   title:
     "NorthSky Reviews | Best VPNs, AI Tools, Travel Tech & Buying Guides",
 
   description:
-    "NorthSky Reviews provides independent technology reviews, comparisons, and buying guides covering VPNs, AI tools, travel technology, software, hosting, cybersecurity, and gadgets.",
+    "NorthSky Reviews provides independent technology reviews, comparisons, and buying guides covering VPNs, AI tools, travel technology, software, cybersecurity, hosting, and gadgets.",
 
   keywords: [
     "VPN reviews",
     "NordVPN review",
     "Saily eSIM review",
+    "best VPN Canada",
     "AI tools",
     "technology reviews",
     "software comparisons",
@@ -31,11 +35,12 @@ export const metadata: Metadata = {
     },
   ],
 
-  creator: "NorthSky Reviews",
+  creator:
+    "NorthSky Reviews",
 
-  metadataBase: new URL(
-    "https://northsky-reviews.vercel.app"
-  ),
+  metadataBase:
+    new URL(siteUrl),
+
 
   openGraph: {
 
@@ -43,10 +48,10 @@ export const metadata: Metadata = {
       "NorthSky Reviews | Smart Technology Recommendations",
 
     description:
-      "Find the best VPNs, AI tools, travel technology, and software with expert reviews and comparisons.",
+      "Expert reviews and comparisons for VPNs, AI tools, travel technology, and software.",
 
     url:
-      "https://northsky-reviews.vercel.app",
+      siteUrl,
 
     siteName:
       "NorthSky Reviews",
@@ -66,7 +71,7 @@ export const metadata: Metadata = {
       "NorthSky Reviews | Best Tech Recommendations",
 
     description:
-      "Independent reviews and buying guides for VPNs, AI tools, software, and technology.",
+      "Independent technology reviews and buying guides.",
 
   },
 
@@ -96,292 +101,382 @@ export default function RootLayout({
 }>) {
 
 
-  return (
+return (
 
-    <html lang="en">
+<html lang="en">
 
 
-      <body className="bg-white text-slate-900 antialiased">
+<body className="bg-white text-slate-900 antialiased">
 
 
-        {/* Google Analytics 4 */}
 
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-528699336"
-          strategy="afterInteractive"
-        />
+{/* Google Analytics */}
 
+<Script
+src="https://www.googletagmanager.com/gtag/js?id=G-528699336"
+strategy="afterInteractive"
+/>
 
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-        >
 
-          {`
+<Script
+id="google-analytics"
+strategy="afterInteractive"
+>
 
-            window.dataLayer = window.dataLayer || [];
+{`
 
-            function gtag(){
-              window.dataLayer.push(arguments);
-            }
+window.dataLayer = window.dataLayer || [];
 
-            gtag(
-              "js",
-              new Date()
-            );
+function gtag(){
+window.dataLayer.push(arguments);
+}
 
+gtag(
+"js",
+new Date()
+);
 
-            gtag(
-              "config",
-              "G-528699336",
-              {
-                page_path: window.location.pathname,
-              }
-            );
 
-          `}
+gtag(
+"config",
+"G-528699336",
+{
+page_path: window.location.pathname
+}
+);
 
-        </Script>
+`}
 
+</Script>
 
 
-        {/* Organization Schema */}
 
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
 
-              "@context":
-                "https://schema.org",
+{/* SEO Structured Data */}
 
-              "@type":
-                "Organization",
 
-              "name":
-                "NorthSky Reviews",
+<script
+type="application/ld+json"
+dangerouslySetInnerHTML={{
+__html: JSON.stringify([
 
-              "url":
-                "https://northsky-reviews.vercel.app",
 
-              "logo":
-                "https://northsky-reviews.vercel.app/icon.png",
+{
+"@context":"https://schema.org",
+"@type":"Organization",
 
-              "description":
-                "Technology reviews, comparisons, and buying guides covering VPNs, AI tools, travel technology, software, hosting, cybersecurity, and gadgets.",
+"name":
+"NorthSky Reviews",
 
-            }),
-          }}
-        />
+"url":
+siteUrl,
 
+"logo":
+`${siteUrl}/icon.png`,
 
+"description":
+"Technology reviews, comparisons, and buying guides covering VPNs, AI tools, travel technology, software, cybersecurity, and gadgets."
+},
 
-        {/* Header */}
 
-        <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
 
+{
+"@context":"https://schema.org",
+"@type":"WebSite",
 
-          <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+"name":
+"NorthSky Reviews",
 
+"url":
+siteUrl,
 
-            <Link
-              href="/"
-              className="text-2xl font-black tracking-tight"
-            >
+"potentialAction":
+{
+"@type":"SearchAction",
 
-              NorthSky
+"target":
+{
+"@type":"EntryPoint",
 
-              <span className="text-blue-600">
-                Reviews
-              </span>
+"urlTemplate":
+`${siteUrl}/search?q={search_term_string}`
+},
 
-            </Link>
+"query-input":
+"required name=search_term_string"
 
+}
 
+},
 
-            <div className="hidden gap-8 text-sm font-semibold md:flex">
 
 
-              <Link
-                href="/"
-                className="transition hover:text-blue-600"
-              >
-                Home
-              </Link>
+{
+"@context":"https://schema.org",
+"@type":"Review",
 
+"itemReviewed":
+{
+"@type":"Product",
 
-              <Link
-                href="/reviews"
-                className="transition hover:text-blue-600"
-              >
-                Reviews
-              </Link>
+"name":"NordVPN",
 
+"brand":
+{
+"@type":"Brand",
+"name":"NordVPN"
+}
 
-              <Link
-                href="/categories"
-                className="transition hover:text-blue-600"
-              >
-                Categories
-              </Link>
+},
 
+"author":
+{
+"@type":"Organization",
+"name":"NorthSky Reviews"
+},
 
-              <Link
-                href="/comparisons"
-                className="transition hover:text-blue-600"
-              >
-                Comparisons
-              </Link>
+"reviewRating":
+{
+"@type":"Rating",
+"ratingValue":"5",
+"bestRating":"5"
+},
 
+"reviewBody":
+"NordVPN offers strong privacy protection, fast speeds, advanced security features, and reliable performance."
+},
 
-              <Link
-                href="/deals"
-                className="transition hover:text-blue-600"
-              >
-                Deals
-              </Link>
 
 
-            </div>
+{
+"@context":"https://schema.org",
+"@type":"Review",
 
+"itemReviewed":
+{
+"@type":"Product",
 
-          </nav>
+"name":"Saily eSIM",
 
+"brand":
+{
+"@type":"Brand",
+"name":"Saily"
+}
 
-        </header>
+},
 
+"author":
+{
+"@type":"Organization",
+"name":"NorthSky Reviews"
+},
 
+"reviewRating":
+{
+"@type":"Rating",
+"ratingValue":"5",
+"bestRating":"5"
+},
 
+"reviewBody":
+"Saily eSIM provides affordable international mobile data plans with simple setup for travelers."
+}
 
-        {children}
 
+])
+}}
+/>
 
 
 
-        {/* Footer */}
 
-        <footer className="mt-20 border-t bg-slate-50">
 
+{/* Header */}
 
-          <div className="mx-auto max-w-7xl px-6 py-12">
 
+<header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
 
-            <div className="grid gap-10 md:grid-cols-3">
 
+<nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
 
-              <div>
 
-                <h3 className="text-xl font-black">
+<Link
+href="/"
+className="text-2xl font-black tracking-tight"
+>
 
-                  NorthSky
+NorthSky
+<span className="text-blue-600">
+Reviews
+</span>
 
-                  <span className="text-blue-600">
-                    Reviews
-                  </span>
+</Link>
 
-                </h3>
 
 
-                <p className="mt-4 text-sm leading-6 text-slate-600">
+<div className="hidden gap-8 text-sm font-semibold md:flex">
 
-                  Independent technology reviews,
-                  comparisons, and buying guides helping
-                  you make smarter purchasing decisions.
 
-                </p>
+<Link href="/" className="hover:text-blue-600">
+Home
+</Link>
 
-              </div>
 
+<Link href="/reviews" className="hover:text-blue-600">
+Reviews
+</Link>
 
 
+<Link href="/categories" className="hover:text-blue-600">
+Categories
+</Link>
 
-              <div>
 
-                <h4 className="font-bold">
-                  Explore
-                </h4>
+<Link href="/comparisons" className="hover:text-blue-600">
+Comparisons
+</Link>
 
 
-                <div className="mt-4 flex flex-col gap-3 text-sm text-slate-600">
+<Link href="/deals" className="hover:text-blue-600">
+Deals
+</Link>
 
 
-                  <Link href="/reviews">
-                    Reviews
-                  </Link>
+</div>
 
 
-                  <Link href="/categories">
-                    Categories
-                  </Link>
+</nav>
 
 
-                  <Link href="/comparisons">
-                    Comparisons
-                  </Link>
+</header>
 
 
-                  <Link href="/deals">
-                    Deals
-                  </Link>
 
 
-                </div>
 
+{children}
 
-              </div>
 
 
 
 
 
-              <div>
+<footer className="mt-20 border-t bg-slate-50">
 
-                <h4 className="font-bold">
-                  Affiliate Disclosure
-                </h4>
 
+<div className="mx-auto max-w-7xl px-6 py-12">
 
-                <p className="mt-4 text-sm leading-6 text-slate-600">
 
-                  Some links on NorthSky Reviews are
-                  affiliate links. If you purchase through
-                  these links, we may earn a commission at
-                  no additional cost to you. This supports
-                  our independent reviews.
+<div className="grid gap-10 md:grid-cols-3">
 
-                </p>
 
 
-              </div>
+<div>
 
+<h3 className="text-xl font-black">
 
-            </div>
+NorthSky
 
+<span className="text-blue-600">
+Reviews
+</span>
 
+</h3>
 
 
+<p className="mt-4 text-sm leading-6 text-slate-600">
 
-            <div className="mt-10 border-t pt-6 text-center text-sm text-slate-500">
+Independent technology reviews,
+comparisons, and buying guides
+helping you make smarter purchasing
+decisions.
 
-              © {new Date().getFullYear()} NorthSky Reviews.
-              All rights reserved.
+</p>
 
-            </div>
+</div>
 
 
 
-          </div>
 
+<div>
 
-        </footer>
+<h4 className="font-bold">
+Explore
+</h4>
 
 
+<div className="mt-4 flex flex-col gap-3 text-sm text-slate-600">
 
-      </body>
+<Link href="/reviews">
+Reviews
+</Link>
 
+<Link href="/categories">
+Categories
+</Link>
 
-    </html>
+<Link href="/comparisons">
+Comparisons
+</Link>
 
-  );
+<Link href="/deals">
+Deals
+</Link>
+
+</div>
+
+
+</div>
+
+
+
+
+<div>
+
+<h4 className="font-bold">
+Affiliate Disclosure
+</h4>
+
+
+<p className="mt-4 text-sm leading-6 text-slate-600">
+
+Some links on NorthSky Reviews are affiliate links.
+We may earn a commission when you purchase through
+these links at no extra cost to you.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div className="mt-10 border-t pt-6 text-center text-sm text-slate-500">
+
+© {new Date().getFullYear()} NorthSky Reviews.
+All rights reserved.
+
+</div>
+
+
+
+</div>
+
+
+</footer>
+
+
+
+</body>
+
+
+</html>
+
+);
 
 }
