@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "NorthSky Reviews | Best VPNs, AI Tools, Travel Tech & Buying Guides",
 
   description:
-    "Discover trusted reviews, comparisons, and buying guides for VPNs, AI tools, travel technology, software, hosting, cybersecurity, and gadgets.",
+    "NorthSky Reviews provides independent technology reviews, comparisons, and buying guides covering VPNs, AI tools, travel technology, software, hosting, cybersecurity, and gadgets.",
 
   keywords: [
     "VPN reviews",
@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     "technology reviews",
     "software comparisons",
     "travel technology",
+    "cybersecurity tools",
     "buying guides",
     "NorthSky Reviews",
   ],
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
       "NorthSky Reviews | Smart Technology Recommendations",
 
     description:
-      "Independent reviews and buying guides helping you choose the best technology products.",
+      "Find the best VPNs, AI tools, travel technology, and software with expert reviews and comparisons.",
 
     url:
       "https://northsky-reviews.vercel.app",
@@ -65,7 +66,7 @@ export const metadata: Metadata = {
       "NorthSky Reviews | Best Tech Recommendations",
 
     description:
-      "Expert reviews for VPNs, AI tools, travel technology, and software.",
+      "Independent reviews and buying guides for VPNs, AI tools, software, and technology.",
 
   },
 
@@ -121,27 +122,57 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
 
             function gtag(){
-              dataLayer.push(arguments);
+              window.dataLayer.push(arguments);
             }
 
             gtag(
-              'js',
+              "js",
               new Date()
             );
 
 
             gtag(
-              'config',
-              'G-528699336',
+              "config",
+              "G-528699336",
               {
-                page_path:
-                window.location.pathname,
+                page_path: window.location.pathname,
               }
             );
 
           `}
 
         </Script>
+
+
+
+        {/* Organization Schema */}
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+
+              "@context":
+                "https://schema.org",
+
+              "@type":
+                "Organization",
+
+              "name":
+                "NorthSky Reviews",
+
+              "url":
+                "https://northsky-reviews.vercel.app",
+
+              "logo":
+                "https://northsky-reviews.vercel.app/icon.png",
+
+              "description":
+                "Technology reviews, comparisons, and buying guides covering VPNs, AI tools, travel technology, software, hosting, cybersecurity, and gadgets.",
+
+            }),
+          }}
+        />
 
 
 
@@ -173,7 +204,7 @@ export default function RootLayout({
 
               <Link
                 href="/"
-                className="hover:text-blue-600 transition"
+                className="transition hover:text-blue-600"
               >
                 Home
               </Link>
@@ -181,7 +212,7 @@ export default function RootLayout({
 
               <Link
                 href="/reviews"
-                className="hover:text-blue-600 transition"
+                className="transition hover:text-blue-600"
               >
                 Reviews
               </Link>
@@ -189,7 +220,7 @@ export default function RootLayout({
 
               <Link
                 href="/categories"
-                className="hover:text-blue-600 transition"
+                className="transition hover:text-blue-600"
               >
                 Categories
               </Link>
@@ -197,7 +228,7 @@ export default function RootLayout({
 
               <Link
                 href="/comparisons"
-                className="hover:text-blue-600 transition"
+                className="transition hover:text-blue-600"
               >
                 Comparisons
               </Link>
@@ -205,7 +236,7 @@ export default function RootLayout({
 
               <Link
                 href="/deals"
-                className="hover:text-blue-600 transition"
+                className="transition hover:text-blue-600"
               >
                 Deals
               </Link>
@@ -228,7 +259,6 @@ export default function RootLayout({
 
 
         {/* Footer */}
-
 
         <footer className="mt-20 border-t bg-slate-50">
 
@@ -255,12 +285,10 @@ export default function RootLayout({
                 <p className="mt-4 text-sm leading-6 text-slate-600">
 
                   Independent technology reviews,
-                  comparisons, and buying guides
-                  helping you make smarter purchasing
-                  decisions.
+                  comparisons, and buying guides helping
+                  you make smarter purchasing decisions.
 
                 </p>
-
 
               </div>
 
@@ -318,7 +346,8 @@ export default function RootLayout({
                   Some links on NorthSky Reviews are
                   affiliate links. If you purchase through
                   these links, we may earn a commission at
-                  no additional cost to you.
+                  no additional cost to you. This supports
+                  our independent reviews.
 
                 </p>
 
@@ -334,9 +363,7 @@ export default function RootLayout({
 
             <div className="mt-10 border-t pt-6 text-center text-sm text-slate-500">
 
-              © {new Date().getFullYear()}
-              {" "}
-              NorthSky Reviews.
+              © {new Date().getFullYear()} NorthSky Reviews.
               All rights reserved.
 
             </div>
