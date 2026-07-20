@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import "./globals.css";
@@ -7,14 +6,13 @@ import "./globals.css";
 const siteUrl = "https://northsky-reviews.vercel.app";
 
 
-export const metadata: Metadata = {
+
+export const metadata = {
 
   metadataBase: new URL(siteUrl),
 
-
   title:
     "NorthSky Reviews | Best VPNs, AI Tools, Travel Tech & Buying Guides",
-
 
   description:
     "Independent technology reviews, comparisons, and buying guides covering VPNs, AI tools, travel technology, software, cybersecurity, and gadgets.",
@@ -30,8 +28,7 @@ export const metadata: Metadata = {
     "software comparisons",
     "travel technology",
     "cybersecurity tools",
-    "buying guides",
-    "NorthSky Reviews"
+    "buying guides"
   ],
 
 
@@ -42,31 +39,18 @@ export const metadata: Metadata = {
   ],
 
 
-  creator:
-    "NorthSky Reviews",
-
-
-  publisher:
-    "NorthSky Reviews",
-
-
-
   openGraph:{
 
-    title:
-      "NorthSky Reviews | Smart Technology Recommendations",
+    title:"NorthSky Reviews | Smart Technology Recommendations",
 
     description:
       "Expert reviews and comparisons for VPNs, AI tools, travel technology, software, and digital products.",
 
-    url:
-      siteUrl,
+    url:siteUrl,
 
-    siteName:
-      "NorthSky Reviews",
+    siteName:"NorthSky Reviews",
 
-    type:
-      "website",
+    type:"website",
 
     images:[
       {
@@ -80,14 +64,11 @@ export const metadata: Metadata = {
   },
 
 
-
   twitter:{
 
-    card:
-      "summary_large_image",
+    card:"summary_large_image",
 
-    title:
-      "NorthSky Reviews | Best Tech Recommendations",
+    title:"NorthSky Reviews | Best Tech Recommendations",
 
     description:
       "Independent technology reviews, comparisons, and buying guides.",
@@ -99,14 +80,10 @@ export const metadata: Metadata = {
   },
 
 
-
   robots:{
-
     index:true,
-    follow:true,
-
-  },
-
+    follow:true
+  }
 
 };
 
@@ -114,16 +91,7 @@ export const metadata: Metadata = {
 
 
 
-export default function RootLayout({
-
-children,
-
-}: Readonly<{
-
-children:React.ReactNode;
-
-}>) {
-
+export default function RootLayout({children}) {
 
 
 return (
@@ -134,10 +102,6 @@ return (
 <body className="bg-white text-slate-900 antialiased">
 
 
-
-
-
-{/* Google Analytics */}
 
 <Script
 src="https://www.googletagmanager.com/gtag/js?id=G-528699336"
@@ -160,18 +124,12 @@ window.dataLayer.push(arguments);
 }
 
 
-gtag(
-"js",
-new Date()
-);
+gtag("js", new Date());
 
 
 gtag(
 "config",
-"G-528699336",
-{
-page_path:window.location.pathname
-}
+"G-528699336"
 );
 
 `}
@@ -183,18 +141,15 @@ page_path:window.location.pathname
 
 
 
-
-{/* Structured Data */}
-
-
 <script
+
 type="application/ld+json"
+
 dangerouslySetInnerHTML={{
+
 __html:JSON.stringify([
 
-
 {
-
 
 "@context":"https://schema.org",
 
@@ -204,19 +159,13 @@ __html:JSON.stringify([
 
 "url":siteUrl,
 
-"logo":
-`${siteUrl}/icon.png`,
-
-
 "description":
 "Independent technology reviews, comparisons, and buying guides."
 
 },
 
 
-
 {
-
 
 "@context":"https://schema.org",
 
@@ -224,45 +173,20 @@ __html:JSON.stringify([
 
 "name":"NorthSky Reviews",
 
-"url":siteUrl,
-
-
-"potentialAction":{
-
-"@type":"SearchAction",
-
-"target":{
-
-"@type":"EntryPoint",
-
-"urlTemplate":
-`${siteUrl}/search?q={search_term_string}`
-
-},
-
-
-"query-input":
-"required name=search_term_string"
+"url":siteUrl
 
 }
-
-}
-
-
 
 ])
+
 }}
+
 />
 
 
 
 
 
-
-
-
-
-{/* Navigation */}
 
 
 <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
@@ -273,7 +197,7 @@ __html:JSON.stringify([
 
 <Link
 href="/"
-className="text-2xl font-black tracking-tight"
+className="text-2xl font-black"
 >
 
 NorthSky
@@ -284,7 +208,6 @@ Reviews
 
 
 </Link>
-
 
 
 
@@ -319,12 +242,10 @@ Deals
 </div>
 
 
-
 </nav>
 
 
 </header>
-
 
 
 
@@ -341,10 +262,6 @@ Deals
 
 
 
-
-{/* Footer */}
-
-
 <footer className="mt-20 border-t bg-slate-50">
 
 
@@ -355,10 +272,7 @@ Deals
 
 
 
-
-
 <div>
-
 
 <h3 className="text-xl font-black">
 
@@ -371,12 +285,12 @@ Reviews
 </h3>
 
 
+<p className="mt-4 text-sm text-slate-600">
 
-<p className="mt-4 text-sm leading-6 text-slate-600">
-
-Independent reviews, comparisons,
-and buying guides helping you make
-smarter technology decisions.
+Independent reviews,
+comparisons, and buying guides
+helping you make smarter
+technology decisions.
 
 </p>
 
@@ -387,36 +301,27 @@ smarter technology decisions.
 
 
 
-
-
-
-
 <div>
-
 
 <h4 className="font-bold">
 Explore
 </h4>
 
 
-
-<div className="mt-4 flex flex-col gap-3 text-sm text-slate-600">
+<div className="mt-4 flex flex-col gap-3 text-sm">
 
 
 <Link href="/reviews">
 Reviews
 </Link>
 
-
 <Link href="/categories">
 Categories
 </Link>
 
-
 <Link href="/comparisons">
 Comparisons
 </Link>
-
 
 <Link href="/deals">
 Deals
@@ -433,18 +338,14 @@ Deals
 
 
 
-
-
-
 <div>
-
 
 <h4 className="font-bold">
 Legal
 </h4>
 
 
-<div className="mt-4 flex flex-col gap-3 text-sm text-slate-600">
+<div className="mt-4 flex flex-col gap-3 text-sm">
 
 
 <Link href="/privacy-policy">
@@ -454,11 +355,6 @@ Privacy Policy
 
 <Link href="/affiliate-disclosure">
 Affiliate Disclosure
-</Link>
-
-
-<Link href="/editorial-policy">
-Editorial Policy
 </Link>
 
 
@@ -478,22 +374,19 @@ Contact
 
 
 
-
 <div>
-
 
 <h4 className="font-bold">
 Affiliate Disclosure
 </h4>
 
 
+<p className="mt-4 text-sm text-slate-600">
 
-<p className="mt-4 text-sm leading-6 text-slate-600">
-
-Some links on NorthSky Reviews are
-affiliate links. We may earn a commission
-when you purchase through them at no
-extra cost to you.
+Some links on NorthSky Reviews
+are affiliate links. We may earn
+a commission at no additional cost
+to you.
 
 </p>
 
@@ -501,15 +394,7 @@ extra cost to you.
 </div>
 
 
-
-
-
-
-
 </div>
-
-
-
 
 
 
@@ -526,8 +411,6 @@ All rights reserved.
 
 
 
-
-
 </div>
 
 
@@ -536,9 +419,7 @@ All rights reserved.
 
 
 
-
 </body>
-
 
 </html>
 
