@@ -1,1 +1,60 @@
-djehebe
+// app/reviews/[slug]/page.js
+export default function ReviewPage({ params }) {
+  const { slug } = params;
+  // Fetch review data based on slug
+  
+  return (
+    <main className="max-w-4xl mx-auto px-6 py-16">
+      {/* Hero */}
+      <h1 className="text-4xl font-bold">NordVPN Review 2026</h1>
+      <div className="flex items-center gap-4 mt-2">
+        <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">Editor's Choice</span>
+        <span className="text-gray-500">⭐ 4.8/5</span>
+      </div>
+      
+      {/* Quick Verdict */}
+      <div className="mt-6 bg-gray-100 rounded-2xl p-6">
+        <h2 className="font-bold">Quick Verdict</h2>
+        <p>NordVPN is the best overall VPN for speed, security, and streaming...</p>
+        <a href="affiliate-link" className="mt-4 inline-block bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold">
+          Get NordVPN → 
+        </a>
+      </div>
+      
+      {/* Pros & Cons */}
+      <div className="grid md:grid-cols-2 gap-6 mt-8">
+        <div className="bg-green-50 rounded-2xl p-6">
+          <h3 className="font-bold text-green-700">Pros ✅</h3>
+          <ul className="list-disc ml-6 mt-2 space-y-1">
+            <li>Blazing fast speeds</li>
+            <li>Strong security features</li>
+            <li>Works with Netflix</li>
+          </ul>
+        </div>
+        <div className="bg-red-50 rounded-2xl p-6">
+          <h3 className="font-bold text-red-700">Cons ❌</h3>
+          <ul className="list-disc ml-6 mt-2 space-y-1">
+            <li>Pricier than some alternatives</li>
+            <li>Linux client needs improvement</li>
+          </ul>
+        </div>
+      </div>
+      
+      {/* Full Review */}
+      <div className="mt-8 prose max-w-none">
+        <h2>Detailed Review</h2>
+        <p>NordVPN is one of the most popular VPNs on the market, and for good reason...</p>
+        {/* More content */}
+      </div>
+      
+      {/* Final Verdict */}
+      <div className="mt-8 border-t pt-8">
+        <h2 className="font-bold text-2xl">Final Verdict</h2>
+        <p>NordVPN is a top-tier VPN that delivers on all fronts...</p>
+        <a href="affiliate-link" className="mt-4 inline-block bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-indigo-700">
+          Get NordVPN Now →
+        </a>
+      </div>
+    </main>
+  );
+}
