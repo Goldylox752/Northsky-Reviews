@@ -11,79 +11,119 @@ const baseUrl =
 export default function sitemap() {
 
 
-  const lastModified =
-    new Date();
+  const lastModified = new Date();
 
 
 
-  const staticPages = [
+  const pages = [
 
-    "",
+    {
+      url:"",
+      frequency:"daily",
+      priority:1
+    },
 
-    "/all-tools",
+    {
+      url:"/ai",
+      frequency:"daily",
+      priority:0.95
+    },
 
-    "/reviews",
+    {
+      url:"/ai/best-ai-tools-2026",
+      frequency:"weekly",
+      priority:0.9
+    },
 
-    "/comparisons",
+    {
+      url:"/all-tools",
+      frequency:"weekly",
+      priority:0.9
+    },
 
-    "/guides",
+    {
+      url:"/reviews",
+      frequency:"weekly",
+      priority:0.8
+    },
 
-    "/about",
+    {
+      url:"/comparisons",
+      frequency:"weekly",
+      priority:0.8
+    },
 
-    "/contact",
+    {
+      url:"/guides",
+      frequency:"weekly",
+      priority:0.8
+    },
 
-    "/affiliate-disclosure",
+    {
+      url:"/about",
+      frequency:"monthly",
+      priority:0.5
+    },
 
-    "/methodology",
+    {
+      url:"/contact",
+      frequency:"monthly",
+      priority:0.5
+    },
 
-    "/newsletter"
+    {
+      url:"/affiliate-disclosure",
+      frequency:"monthly",
+      priority:0.4
+    },
+
+    {
+      url:"/methodology",
+      frequency:"monthly",
+      priority:0.6
+    }
 
   ];
 
 
 
 
-  const staticUrls =
-    staticPages.map((page)=>({
+  const staticUrls = pages.map(page=>({
 
-      url:
-        `${baseUrl}${page}`,
+    url:`${baseUrl}${page.url}`,
 
-      lastModified,
+    lastModified,
 
-      changeFrequency:
-        page === ""
-        ? "daily"
-        : "weekly",
+    changeFrequency:
+    page.frequency,
 
-      priority:
-        page === ""
-        ? 1
-        : 0.8
+    priority:
+    page.priority
 
-    }));
+  }));
 
 
 
 
 
 
+  // AI Reviews
 
-  const reviewUrls =
-    tools.map((tool)=>({
+  const aiReviewUrls =
+  tools.map(tool=>({
 
-      url:
-        `${baseUrl}/reviews/${tool.slug}`,
+    url:
+    `${baseUrl}/ai/reviews/${tool.slug}`,
 
-      lastModified,
+    lastModified,
 
-      changeFrequency:
-        "monthly",
+    changeFrequency:
+    "monthly",
 
-      priority:
-        0.8
+    priority:
+    0.8
 
-    }));
+  }));
 
 
 
@@ -91,68 +131,71 @@ export default function sitemap() {
 
 
 
+  // AI Categories
+
+  const aiCategoryUrls =
+  categories.map(category=>({
+
+    url:
+    `${baseUrl}/ai/categories/${category.slug}`,
+
+    lastModified,
+
+    changeFrequency:
+    "weekly",
+
+    priority:
+    0.75
+
+  }));
+
+
+
+
+
+
+
+  // Comparisons
 
   const comparisonUrls =
-    comparisons.map((item)=>({
+  comparisons.map(item=>({
 
-      url:
-        `${baseUrl}/comparisons/${item.slug}`,
+    url:
+    `${baseUrl}/comparisons/${item.slug}`,
 
-      lastModified,
+    lastModified,
 
-      changeFrequency:
-        "monthly",
+    changeFrequency:
+    "monthly",
 
-      priority:
-        0.8
+    priority:
+    0.8
 
-    }));
-
-
+  }));
 
 
 
 
 
+
+
+  // Guides
 
   const guideUrls =
-    guides.map((guide)=>({
+  guides.map(guide=>({
 
-      url:
-        `${baseUrl}/guides/${guide.slug}`,
+    url:
+    `${baseUrl}/guides/${guide.slug}`,
 
-      lastModified,
+    lastModified,
 
-      changeFrequency:
-        "weekly",
+    changeFrequency:
+    "weekly",
 
-      priority:
-        0.9
+    priority:
+    0.85
 
-    }));
-
-
-
-
-
-
-
-
-  const categoryUrls =
-    categories.map((category)=>({
-
-      url:
-        `${baseUrl}/categories/${category.slug}`,
-
-      lastModified,
-
-      changeFrequency:
-        "weekly",
-
-      priority:
-        0.7
-
-    }));
+  }));
 
 
 
@@ -164,13 +207,13 @@ export default function sitemap() {
 
     ...staticUrls,
 
-    ...reviewUrls,
+    ...aiReviewUrls,
+
+    ...aiCategoryUrls,
 
     ...comparisonUrls,
 
-    ...guideUrls,
-
-    ...categoryUrls
+    ...guideUrls
 
   ];
 
