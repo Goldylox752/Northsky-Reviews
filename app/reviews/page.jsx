@@ -17,7 +17,12 @@ export const metadata = {
     "VPN reviews",
     "software comparisons",
     "best technology products 2026"
-  ]
+  ],
+
+  alternates:{
+    canonical:
+    "https://northsky-reviews.vercel.app/reviews"
+  }
 
 };
 
@@ -32,6 +37,45 @@ const featuredReviews = [...tools]
 
 
 
+const schema = {
+
+"@context":"https://schema.org",
+
+"@type":"CollectionPage",
+
+"name":"NorthSky Reviews",
+
+"description":
+"Technology reviews, comparisons, and buying guides.",
+
+"url":
+"https://northsky-reviews.vercel.app/reviews",
+
+"mainEntity":{
+
+"@type":"ItemList",
+
+"itemListElement":
+
+featuredReviews.map((tool,index)=>({
+
+"@type":"ListItem",
+
+"position":index+1,
+
+"name":tool.name,
+
+"url":
+`https://northsky-reviews.vercel.app/reviews/${tool.slug}`
+
+}))
+
+}
+
+};
+
+
+
 return (
 
 <main className="min-h-screen bg-white text-slate-900">
@@ -40,62 +84,22 @@ return (
 <script
 type="application/ld+json"
 dangerouslySetInnerHTML={{
-__html:JSON.stringify({
-
-"@context":"https://schema.org",
-
-"@type":"CollectionPage",
-
-"name":"NorthSky Reviews",
-
-"url":
-"https://northsky-reviews.vercel.app/reviews",
-
-"description":
-"Technology reviews, comparisons, and buying guides.",
-
-
-mainEntity:{
-"@type":"ItemList",
-
-itemListElement:featuredReviews.map((tool,index)=>({
-
-"@type":"ListItem",
-
-position:index+1,
-
-name:tool.name,
-
-url:
-`https://northsky-reviews.vercel.app/reviews/${tool.slug}`
-
-}))
-
-}
-
-})
-
+__html:JSON.stringify(schema)
 }}
 />
 
 
 
-
-
-{/* HERO */}
-
 <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-blue-900 px-6 py-24 text-center text-white">
-
 
 <div className="mx-auto max-w-5xl">
 
 
 <div className="inline-flex rounded-full bg-blue-500/20 px-5 py-2 text-sm font-bold text-blue-300">
 
-🔬 Expert Technology Reviews
+🔬 Independent Technology Testing
 
 </div>
-
 
 
 <h1 className="mt-6 text-5xl font-black md:text-7xl">
@@ -105,43 +109,34 @@ NorthSky Reviews
 </h1>
 
 
-
 <p className="mx-auto mt-6 max-w-3xl text-xl text-slate-300">
 
-Independent reviews, comparisons, and buying guides
-for AI tools, VPNs, software, travel technology,
-and digital products.
+Discover the best AI tools, VPNs, software,
+and technology products with expert analysis,
+comparisons, and buying guides.
 
 </p>
-
 
 
 <div className="mt-10 flex flex-wrap justify-center gap-4">
 
 
 <Link
-
 href="/all-tools"
-
 className="rounded-xl bg-blue-600 px-8 py-4 font-bold"
-
 >
 
-Browse Tools →
+Explore Reviews →
 
 </Link>
-
 
 
 <Link
-
 href="/comparisons"
-
 className="rounded-xl border border-white/30 px-8 py-4 font-bold"
-
 >
 
-Compare Products →
+Compare Technology →
 
 </Link>
 
@@ -150,7 +145,6 @@ Compare Products →
 
 
 </div>
-
 
 </section>
 
@@ -158,53 +152,17 @@ Compare Products →
 
 
 
-
-
-{/* FEATURED REVIEWS */}
-
-
 <section className="mx-auto max-w-7xl px-6 py-20">
 
 
-<div className="flex items-center justify-between">
-
-
-<div>
-
 <h2 className="text-4xl font-black">
-
-Latest Reviews
-
+Featured Reviews
 </h2>
 
 
 <p className="mt-2 text-slate-600">
-
-Expert analysis of the latest technology products.
-
+NorthSky Score rated technology products.
 </p>
-
-
-</div>
-
-
-
-<Link
-
-href="/all-tools"
-
-className="font-bold text-blue-600"
-
->
-
-View All →
-
-</Link>
-
-
-</div>
-
-
 
 
 
@@ -213,14 +171,13 @@ View All →
 
 {featuredReviews.map((tool)=>(
 
-
 <Link
 
 key={tool.slug}
 
 href={`/reviews/${tool.slug}`}
 
-className="rounded-3xl border p-8 transition hover:-translate-y-2 hover:shadow-xl"
+className="rounded-3xl border p-8 hover:-translate-y-2 hover:shadow-xl transition"
 
 >
 
@@ -238,13 +195,12 @@ className="rounded-3xl border p-8 transition hover:-translate-y-2 hover:shadow-x
 
 <span className="font-black text-green-600">
 
-⭐ {tool.rating}
+⭐ NorthSky {tool.rating}
 
 </span>
 
 
 </div>
-
 
 
 
@@ -264,23 +220,20 @@ className="rounded-3xl border p-8 transition hover:-translate-y-2 hover:shadow-x
 
 
 
-
 <span className="mt-6 block font-bold text-blue-600">
 
-Read Review →
+Full Review →
 
 </span>
 
 
-</Link>
 
+</Link>
 
 ))}
 
 
-
 </div>
-
 
 </section>
 
@@ -288,22 +241,13 @@ Read Review →
 
 
 
-
-
-
-{/* COMPARISONS */}
-
-
 <section className="bg-slate-50 px-6 py-20">
-
 
 <div className="mx-auto max-w-7xl">
 
 
 <h2 className="text-4xl font-black">
-
-⚖️ Popular Comparisons
-
+⚖️ Technology Comparisons
 </h2>
 
 
@@ -320,31 +264,23 @@ key={item.slug}
 
 href={`/comparisons/${item.slug}`}
 
-className="rounded-2xl bg-white p-6 shadow-sm hover:shadow-lg"
+className="rounded-2xl bg-white p-6 shadow hover:shadow-xl"
 
 >
 
 
 <h3 className="text-xl font-bold">
-
 {item.title}
-
 </h3>
 
 
-
 <p className="mt-3 text-slate-600">
-
 {item.description}
-
 </p>
 
 
-
-<span className="mt-4 block font-bold text-blue-600">
-
+<span className="mt-4 block text-blue-600 font-bold">
 Compare →
-
 </span>
 
 
@@ -366,44 +302,24 @@ Compare →
 
 
 
+<section className="px-6 py-16">
 
 
-{/* METHODOLOGY */}
-
-
-<section className="px-6 py-20">
-
-
-<div className="mx-auto max-w-5xl rounded-3xl bg-slate-950 p-12 text-center text-white">
+<div className="mx-auto max-w-4xl rounded-3xl bg-slate-950 p-10 text-center text-white">
 
 
 <h2 className="text-3xl font-black">
-
-How NorthSky Reviews Works
-
+How We Review Products
 </h2>
 
 
-<p className="mt-5 text-slate-300">
+<p className="mt-4 text-slate-300">
 
-We analyze features, pricing, security,
-performance, usability, and real-world value
-to help readers make better decisions.
+We test technology based on features,
+security, pricing, usability, performance,
+and overall value.
 
 </p>
-
-
-<Link
-
-href="/methodology"
-
-className="mt-8 inline-block rounded-xl bg-blue-600 px-8 py-4 font-bold"
-
->
-
-Review Methodology →
-
-</Link>
 
 
 </div>
@@ -414,29 +330,18 @@ Review Methodology →
 
 
 
-
-
-{/* CTA */}
-
-
 <section className="bg-blue-600 px-6 py-20 text-center text-white">
 
 
 <h2 className="text-4xl font-black">
-
-Find Better Technology Faster
-
+Stay Ahead of Technology
 </h2>
 
 
-
-<p className="mx-auto mt-4 max-w-2xl">
-
-Explore AI tools, software, VPNs, and technology
-recommendations from NorthSky Reviews.
-
+<p className="mt-4">
+Get updates on the best AI tools,
+software, and digital products.
 </p>
-
 
 
 <Link
@@ -447,7 +352,7 @@ className="mt-8 inline-block rounded-xl bg-white px-8 py-4 font-bold text-blue-6
 
 >
 
-Join Newsletter →
+Join NorthSky Newsletter →
 
 </Link>
 
@@ -455,6 +360,13 @@ Join Newsletter →
 </section>
 
 
+
+<footer className="px-6 py-8 text-center text-sm text-slate-500">
+
+Disclosure: NorthSky Reviews may earn commissions from affiliate links.
+Our ratings are independent.
+
+</footer>
 
 
 
