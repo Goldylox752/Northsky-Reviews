@@ -10,7 +10,9 @@ const siteUrl =
 
 export const metadata = {
 
-  metadataBase:new URL(siteUrl),
+  metadataBase:
+    new URL(siteUrl),
+
 
   title:{
     default:
@@ -43,35 +45,62 @@ export const metadata = {
 
   robots:{
     index:true,
-    follow:true
+    follow:true,
+
+    googleBot:{
+      index:true,
+      follow:true
+    }
   },
 
 
   openGraph:{
-    title:"NorthSky Reviews",
+    title:
+      "NorthSky Reviews",
+
     description:
       "AI tools, software reviews, comparisons and technology buying guides.",
-    url:siteUrl,
-    siteName:"NorthSky Reviews",
-    locale:"en_CA",
-    type:"website",
+
+    url:
+      siteUrl,
+
+    siteName:
+      "NorthSky Reviews",
+
+    locale:
+      "en_CA",
+
+    type:
+      "website",
 
     images:[
       {
-        url:`${siteUrl}/og-image.jpg`,
-        width:1200,
-        height:630,
-        alt:"NorthSky Reviews Technology Guides"
+        url:
+          `${siteUrl}/og-image.jpg`,
+
+        width:
+          1200,
+
+        height:
+          630,
+
+        alt:
+          "NorthSky Reviews"
       }
     ]
   },
 
 
   twitter:{
-    card:"summary_large_image",
-    title:"NorthSky Reviews",
+    card:
+      "summary_large_image",
+
+    title:
+      "NorthSky Reviews",
+
     description:
       "Independent technology reviews and AI software comparisons.",
+
     images:[
       `${siteUrl}/og-image.jpg`
     ]
@@ -79,10 +108,12 @@ export const metadata = {
 
 
   alternates:{
-    canonical:siteUrl
+    canonical:
+      siteUrl
   }
 
 };
+
 
 
 
@@ -95,14 +126,17 @@ return (
 <html lang="en">
 
 
-<body className="
+<body
+suppressHydrationWarning
+className="
 bg-white
 text-slate-900
 antialiased
 flex
 min-h-screen
 flex-col
-">
+"
+>
 
 
 
@@ -126,7 +160,7 @@ function gtag(){
 dataLayer.push(arguments);
 }
 
-gtag("js",new Date());
+gtag("js", new Date());
 
 gtag("config","G-528699336");
 
@@ -137,37 +171,66 @@ gtag("config","G-528699336");
 
 
 
-{/* Schema */}
+
+{/* SEO Schema */}
 
 <Script
-
-id="organization-schema"
-
+id="website-schema"
 type="application/ld+json"
-
 dangerouslySetInnerHTML={{
-
 __html:JSON.stringify({
 
 "@context":"https://schema.org",
 
-"@type":"Organization",
+"@type":"WebSite",
 
-"name":"NorthSky Reviews",
+"name":
+"NorthSky Reviews",
 
-"url":siteUrl,
+"url":
+siteUrl,
 
-"logo":
-`${siteUrl}/icon-512.png`,
 
 "description":
-"Independent technology reviews, AI tool comparisons and buying guides."
+"Independent technology reviews, AI tool comparisons and buying guides.",
+
+
+"publisher":{
+
+"@type":"Organization",
+
+"name":
+"NorthSky Reviews",
+
+"logo":{
+
+"@type":"ImageObject",
+
+"url":
+`${siteUrl}/icon-512.png`
+
+}
+
+},
+
+
+"potentialAction":{
+
+"@type":"SearchAction",
+
+"target":
+`${siteUrl}/search?q={search_term_string}`,
+
+"query-input":
+"required name=search_term_string"
+
+}
+
 
 })
-
 }}
-
 />
+
 
 
 
@@ -194,7 +257,6 @@ justify-between
 px-6
 py-5
 ">
-
 
 
 <Link
@@ -232,14 +294,12 @@ Reviews
 </Link>
 
 
-
 <Link
 href="/comparisons"
 className="hover:text-blue-600"
 >
 Comparisons
 </Link>
-
 
 
 <Link
@@ -250,7 +310,6 @@ AI Hub
 </Link>
 
 
-
 <Link
 href="/deals"
 className="hover:text-blue-600"
@@ -259,10 +318,7 @@ Deals
 </Link>
 
 
-
-
 <GlobalSearch />
-
 
 
 </div>
@@ -270,8 +326,16 @@ Deals
 
 
 
-</nav>
 
+<div className="md:hidden">
+
+<GlobalSearch />
+
+</div>
+
+
+
+</nav>
 
 </header>
 
@@ -310,7 +374,6 @@ md:grid-cols-4
 ">
 
 
-
 <div>
 
 <h3 className="
@@ -334,8 +397,8 @@ technology comparisons and buying guides.
 
 </p>
 
-
 </div>
+
 
 
 
@@ -349,36 +412,26 @@ Explore
 </h4>
 
 
-<div className="
-mt-4
-space-y-2
-text-sm
-">
+<div className="mt-4 space-y-2 text-sm">
 
 
 <Link href="/ai">
 AI Tools
 </Link>
 
-
 <br/>
-
 
 <Link href="/reviews">
 Reviews
 </Link>
 
-
 <br/>
-
 
 <Link href="/comparisons">
 Comparisons
 </Link>
 
-
 <br/>
-
 
 <Link href="/guides">
 Guides
@@ -387,8 +440,8 @@ Guides
 
 </div>
 
-
 </div>
+
 
 
 
@@ -402,17 +455,12 @@ Categories
 </h4>
 
 
-<div className="
-mt-4
-space-y-2
-text-sm
-">
+<div className="mt-4 space-y-2 text-sm">
 
 
 <Link href="/categories/vpn">
 VPN
 </Link>
-
 
 <br/>
 
@@ -421,14 +469,12 @@ VPN
 AI Tools
 </Link>
 
-
 <br/>
 
 
 <Link href="/categories/software">
 Software
 </Link>
-
 
 <br/>
 
@@ -440,8 +486,8 @@ Travel Tech
 
 </div>
 
-
 </div>
+
 
 
 
@@ -455,17 +501,12 @@ Company
 </h4>
 
 
-<div className="
-mt-4
-space-y-2
-text-sm
-">
+<div className="mt-4 space-y-2 text-sm">
 
 
 <Link href="/about">
 About
 </Link>
-
 
 <br/>
 
@@ -474,14 +515,12 @@ About
 Contact
 </Link>
 
-
 <br/>
 
 
 <Link href="/privacy">
 Privacy
 </Link>
-
 
 <br/>
 
@@ -493,12 +532,11 @@ Terms
 
 </div>
 
-
 </div>
 
 
-
 </div>
+
 
 
 
@@ -512,22 +550,26 @@ text-sm
 text-slate-500
 ">
 
+
 © {new Date().getFullYear()} NorthSky Reviews.
+
 
 <br/>
 
+
 Affiliate links may earn us a commission at no extra cost.
 
-</div>
 
+</div>
 
 
 </footer>
 
 
 
-</body>
 
+
+</body>
 
 </html>
 
