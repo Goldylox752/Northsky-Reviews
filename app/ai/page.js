@@ -1,7 +1,6 @@
 import Link from "next/link";
-import Newsletter from "@/components/Newsletter";
-import { tools, categories } from "@/app/data/tools";
-import { comparisons } from "@/app/data/comparisons";
+import { tools = [], categories = [] } from "@/app/data/tools";
+import { comparisons = [] } from "@/app/data/comparisons";
 
 
 export const metadata = {
@@ -15,11 +14,10 @@ export const metadata = {
   keywords:[
     "best AI tools 2026",
     "AI software reviews",
-    "AI tools comparison",
     "AI productivity tools",
     "AI automation software",
-    "ChatGPT alternatives",
-    "AI coding tools"
+    "AI coding tools",
+    "ChatGPT alternatives"
   ],
 
   alternates:{
@@ -31,18 +29,25 @@ export const metadata = {
 
 
 
-const aiTools = tools
-.filter(
-(tool)=>
-tool.category?.toLowerCase().includes("ai") ||
-tool.tags?.includes("ai")
+const aiTools = (tools || [])
+.filter((tool)=>
+
+tool?.category?.toLowerCase()?.includes("ai") ||
+
+tool?.tags?.includes("ai")
+
 )
-.sort((a,b)=>b.rating-a.rating)
+.sort(
+(a,b)=>
+(b?.rating || 0) - (a?.rating || 0)
+)
 .slice(0,6);
 
 
 
+
 export default function AIPage(){
+
 
 return (
 
@@ -72,9 +77,7 @@ __html:JSON.stringify({
 
 
 
-{/* HERO */}
-
-<section className="bg-gradient-to-br from-slate-950 via-indigo-950 to-blue-900 px-6 py-28 text-white">
+<section className="bg-gradient-to-br from-slate-950 via-indigo-950 to-blue-900 px-6 py-24 text-white">
 
 
 <div className="mx-auto max-w-6xl text-center">
@@ -100,11 +103,11 @@ Find The Best AI Tools
 
 
 
-<p className="mx-auto mt-8 max-w-3xl text-xl leading-8 text-slate-300">
+<p className="mx-auto mt-8 max-w-3xl text-xl text-slate-300">
 
-Explore the best AI assistants, writing tools,
-coding software, image generators, automation platforms,
-and business AI solutions.
+Explore AI assistants, writing software,
+coding tools, image generators, automation
+platforms and business AI solutions.
 
 </p>
 
@@ -114,8 +117,11 @@ and business AI solutions.
 
 
 <Link
+
 href="/ai/best-ai-tools-2026"
+
 className="rounded-xl bg-blue-600 px-8 py-4 font-bold hover:bg-blue-700"
+
 >
 
 Best AI Tools 2026
@@ -123,9 +129,13 @@ Best AI Tools 2026
 </Link>
 
 
+
 <Link
+
 href="/comparisons"
+
 className="rounded-xl border border-white/30 px-8 py-4 font-bold hover:bg-white/10"
+
 >
 
 Compare AI Tools
@@ -137,38 +147,48 @@ Compare AI Tools
 
 
 
+
 <div className="mt-14 grid gap-5 md:grid-cols-4">
 
 
 <div className="rounded-2xl bg-white/10 p-6">
+
 <p className="text-4xl font-black">
 {aiTools.length}+
 </p>
+
 <p className="text-slate-300">
-AI Reviews
+Featured AI Tools
 </p>
+
 </div>
 
 
 
 <div className="rounded-2xl bg-white/10 p-6">
+
 <p className="text-4xl font-black">
 {comparisons.length}+
 </p>
+
 <p className="text-slate-300">
 Comparisons
 </p>
+
 </div>
 
 
 
 <div className="rounded-2xl bg-white/10 p-6">
+
 <p className="text-4xl font-black">
 {categories.length}
 </p>
+
 <p className="text-slate-300">
 Categories
 </p>
+
 </div>
 
 
@@ -191,13 +211,12 @@ Updated Rankings
 
 </div>
 
+
 </section>
 
 
 
 
-
-{/* CATEGORIES */}
 
 <section className="bg-slate-50 px-6 py-20">
 
@@ -216,7 +235,8 @@ Explore AI Categories
 <div className="mt-12 grid gap-6 md:grid-cols-3">
 
 
-{categories.map((category)=>(
+{(categories || []).map((category)=>(
+
 
 <Link
 
@@ -224,13 +244,15 @@ key={category.slug}
 
 href={`/categories/${category.slug}`}
 
-className="rounded-3xl bg-white p-8 shadow transition hover:-translate-y-2 hover:shadow-xl"
+className="rounded-3xl bg-white p-8 shadow hover:-translate-y-2 hover:shadow-xl"
 
 >
 
 
 <div className="text-4xl">
-{category.icon}
+
+{category.icon || "🤖"}
+
 </div>
 
 
@@ -243,12 +265,13 @@ className="rounded-3xl bg-white p-8 shadow transition hover:-translate-y-2 hover
 
 <p className="mt-3 text-slate-600">
 
-Discover top AI software for {category.name.toLowerCase()}.
+Explore top AI software and reviews.
 
 </p>
 
 
 </Link>
+
 
 ))}
 
@@ -266,14 +289,7 @@ Discover top AI software for {category.name.toLowerCase()}.
 
 
 
-
-{/* FEATURED TOOLS */}
-
-
-<section
-id="tools"
-className="px-6 py-24"
->
+<section className="px-6 py-24">
 
 
 <div className="mx-auto max-w-7xl">
@@ -286,14 +302,6 @@ Featured AI Tools
 </h2>
 
 
-<p className="mt-4 text-center text-slate-600">
-
-Top-rated AI software selected by NorthSky Reviews.
-
-</p>
-
-
-
 
 <div className="mt-12 grid gap-8 md:grid-cols-3">
 
@@ -302,14 +310,17 @@ Top-rated AI software selected by NorthSky Reviews.
 
 
 <div
-key={tool.slug}
-className="rounded-3xl border p-8 shadow-sm transition hover:-translate-y-2 hover:shadow-xl"
+
+key={tool.slug || tool.name}
+
+className="rounded-3xl border p-8 shadow-sm hover:shadow-xl"
+
 >
 
 
 <span className="rounded-full bg-blue-100 px-4 py-2 text-sm font-bold text-blue-700">
 
-{tool.category}
+{tool.category || "AI Tool"}
 
 </span>
 
@@ -328,14 +339,6 @@ className="rounded-3xl border p-8 shadow-sm transition hover:-translate-y-2 hove
 {tool.description}
 
 </p>
-
-
-
-<div className="mt-6 text-yellow-500">
-
-★★★★★
-
-</div>
 
 
 
@@ -360,6 +363,8 @@ Read Review →
 
 
 
+{tool.link && (
+
 <a
 
 href={tool.link}
@@ -375,6 +380,8 @@ className="block rounded-xl bg-blue-600 px-5 py-3 text-center font-bold text-whi
 Visit Website →
 
 </a>
+
+)}
 
 
 </div>
@@ -400,12 +407,10 @@ Visit Website →
 
 
 
-{/* TRUST */}
-
 <section className="bg-slate-900 px-6 py-20 text-white">
 
 
-<div className="mx-auto max-w-6xl text-center">
+<div className="mx-auto max-w-5xl text-center">
 
 
 <h2 className="text-4xl font-black">
@@ -415,61 +420,13 @@ Why Trust NorthSky AI Reviews?
 </h2>
 
 
-<p className="mx-auto mt-5 max-w-3xl text-slate-300">
+<p className="mt-5 text-slate-300">
 
-We review AI platforms based on features,
-pricing, usability, performance, security,
-and real-world usefulness.
+We analyze AI tools based on features,
+pricing, usability, performance and
+real-world value.
 
 </p>
-
-
-
-<div className="mt-10 grid gap-6 md:grid-cols-3">
-
-
-<div className="rounded-3xl bg-white/10 p-8">
-
-<h3 className="text-2xl font-black">
-🔎 Research
-</h3>
-
-<p className="mt-3 text-slate-300">
-We analyze AI products and features.
-</p>
-
-</div>
-
-
-
-<div className="rounded-3xl bg-white/10 p-8">
-
-<h3 className="text-2xl font-black">
-⚖️ Compare
-</h3>
-
-<p className="mt-3 text-slate-300">
-We compare value and performance.
-</p>
-
-</div>
-
-
-
-<div className="rounded-3xl bg-white/10 p-8">
-
-<h3 className="text-2xl font-black">
-⭐ Recommend
-</h3>
-
-<p className="mt-3 text-slate-300">
-We highlight the best tools.
-</p>
-
-</div>
-
-
-</div>
 
 
 </div>
@@ -478,12 +435,6 @@ We highlight the best tools.
 </section>
 
 
-
-
-
-
-
-{/* CTA */}
 
 
 <section className="bg-blue-600 px-6 py-20 text-center text-white">
@@ -496,13 +447,6 @@ Find Your Perfect AI Tool
 </h2>
 
 
-<p className="mt-5 text-blue-100">
-
-Read our complete AI rankings and comparisons.
-
-</p>
-
-
 <Link
 
 href="/ai/best-ai-tools-2026"
@@ -511,19 +455,12 @@ className="mt-8 inline-block rounded-xl bg-white px-8 py-4 font-bold text-blue-6
 
 >
 
-Explore Best AI Tools →
+Explore AI Rankings →
 
 </Link>
 
 
 </section>
-
-
-
-
-
-
-<Newsletter variant="hero" />
 
 
 
