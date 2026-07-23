@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Script from "next/script";
+
 import Newsletter from "@/components/Newsletter";
 import SearchBar from "@/components/SearchBar";
 
@@ -9,29 +11,33 @@ import { comparisons } from "@/app/data/comparisons";
 export const metadata = {
 
   title:
-    "NorthSky Reviews | Best AI Tools, Software & Tech Reviews 2026",
+    "NorthSky Reviews | AI Tools, Software, Travel & Technology Reviews 2026",
 
   description:
-    "Find the best AI tools, software, VPNs, laptops, hosting, and technology products. Expert reviews, comparisons, and buying guides from NorthSky Reviews.",
+    "Discover the best AI tools, software, VPNs, laptops, travel technology, and digital products. NorthSky Reviews provides expert reviews, comparisons, and buying guides.",
 
   keywords:[
     "AI tools 2026",
     "AI software reviews",
     "technology reviews",
-    "VPN reviews",
     "software comparisons",
+    "VPN reviews",
+    "laptop reviews",
+    "travel deals",
+    "flight comparison",
+    "hotel reviews",
+    "travel technology",
     "productivity tools",
-    "AI automation tools",
-    "best software"
+    "AI automation tools"
   ],
 
   openGraph:{
 
     title:
-      "NorthSky Reviews | Best AI Tools & Technology Reviews",
+      "NorthSky Reviews | AI, Software, Travel & Technology",
 
     description:
-      "Independent technology reviews, comparisons, and buying guides.",
+      "Independent reviews, comparisons, buying guides, and travel recommendations.",
 
     url:
       "https://northsky-reviews.vercel.app",
@@ -56,7 +62,7 @@ export const metadata = {
 
 const topTools =
 [
-...tools
+  ...tools
 ]
 .sort(
 (a,b)=>
@@ -71,15 +77,12 @@ tools.slice(0,6);
 
 
 
-
-
 export default function HomePage(){
 
 
 return (
 
 <main className="min-h-screen bg-white text-slate-900">
-
 
 
 {/* SEO Schema */}
@@ -95,22 +98,17 @@ __html:JSON.stringify({
 "@context":
 "https://schema.org",
 
-
 "@type":
 "Organization",
-
 
 "name":
 "NorthSky Reviews",
 
-
 "url":
 "https://northsky-reviews.vercel.app",
 
-
 "description":
-"Independent reviews and comparisons for AI tools, software, and technology products."
-
+"Independent reviews, comparisons, travel recommendations, and buying guides for AI tools, software, and technology products."
 
 })
 
@@ -120,16 +118,13 @@ __html:JSON.stringify({
 
 
 
-
-
-{/* HERO */}
+{/* HERO SECTION */}
 
 
 <section className="bg-gradient-to-br from-slate-950 via-slate-800 to-blue-900 px-6 py-24 text-center text-white">
 
 
 <div className="mx-auto max-w-5xl">
-
 
 
 <div className="inline-flex rounded-full bg-blue-500/20 px-5 py-2 text-sm font-bold text-blue-300">
@@ -140,56 +135,37 @@ __html:JSON.stringify({
 
 
 
-
 <h1 className="mt-6 text-5xl font-black md:text-7xl">
-
 
 Find The Best
 
-
 <br/>
-
 
 <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
 
-AI Tools & Technology
+AI Tools, Technology & Travel
 
 </span>
-
 
 </h1>
 
 
 
-
-
 <p className="mx-auto mt-6 max-w-3xl text-xl text-slate-300">
 
-
 Expert reviews, comparisons, and buying guides for AI software,
-business tools, laptops, VPNs, hosting, and emerging technology.
-
+business tools, laptops, VPNs, hosting, travel technology,
+flights, hotels, and digital products.
 
 </p>
 
 
 
-
-
-
-{/* LIVE SEARCH */}
-
-
 <div className="mx-auto mt-10 flex max-w-3xl justify-center">
-
 
 <SearchBar />
 
-
 </div>
-
-
-
 
 
 
@@ -210,6 +186,19 @@ Browse Reviews ↓
 
 
 
+<Link
+
+href="/travel"
+
+className="rounded-xl border border-white/30 px-8 py-4 font-bold hover:bg-white/10"
+
+>
+
+Explore Travel Deals ✈️
+
+</Link>
+
+
 
 <Link
 
@@ -227,119 +216,72 @@ Compare Products →
 </div>
 
 
-
-
 </div>
 
 
 </section>
-
-
-
-
-
-
-
 {/* STATS */}
 
-
 <section className="border-b bg-white px-6 py-10">
-
 
 <div className="mx-auto grid max-w-5xl gap-6 text-center md:grid-cols-4">
 
 
-
 <div>
-
 <h3 className="text-3xl font-black">
-
 {tools.length}+
-
 </h3>
 
-
 <p className="text-slate-600">
-
 Reviews
-
 </p>
-
-
 </div>
 
 
 
-
-
 <div>
-
 <h3 className="text-3xl font-black">
-
 {comparisons.length}+
-
 </h3>
 
-
 <p className="text-slate-600">
-
 Comparisons
-
 </p>
-
-
 </div>
 
 
 
-
-
 <div>
-
 <h3 className="text-3xl font-black">
-
-50+
-
+100+
 </h3>
 
-
 <p className="text-slate-600">
-
 Buying Guides
-
 </p>
-
-
 </div>
-
-
 
 
 
 <div>
-
 <h3 className="text-3xl font-black">
-
 Weekly
-
 </h3>
 
-
 <p className="text-slate-600">
-
 Updates
-
 </p>
-
-
 </div>
 
 
-
 </div>
-
 
 </section>
+
+
+
+
+
 {/* BEST TECHNOLOGY PICKS */}
 
 <section className="bg-slate-50 px-6 py-20">
@@ -353,8 +295,9 @@ Updates
 🏆 Best Technology Picks 2026
 </h2>
 
+
 <p className="mt-3 text-slate-600">
-Our top recommendations across the most popular technology categories.
+Explore top-rated AI tools, software, and technology products.
 </p>
 
 </div>
@@ -369,21 +312,21 @@ Our top recommendations across the most popular technology categories.
 
 {
 icon:"🤖",
-title:"Best AI Assistants",
-desc:"Chatbots, AI agents, and productivity assistants for work and business.",
+title:"Best AI Tools",
+desc:"AI assistants, agents, and automation tools.",
 link:"/categories/ai"
 },
 
 {
 icon:"💻",
 title:"Best Coding AI",
-desc:"AI-powered development tools for programmers and engineers.",
+desc:"Developer tools and AI programming assistants.",
 link:"/categories/coding"
 },
 
 {
 icon:"🎨",
-title:"Best Creative AI",
+title:"Creative AI",
 desc:"Image, video, design, and content creation tools.",
 link:"/categories/creative-ai"
 },
@@ -391,20 +334,20 @@ link:"/categories/creative-ai"
 {
 icon:"🔒",
 title:"Best VPN Services",
-desc:"Privacy, security, and streaming VPN recommendations.",
+desc:"Privacy, security, and streaming recommendations.",
 link:"/categories/vpn"
 },
 
 {
 icon:"🌐",
-title:"Best Web Tools",
-desc:"Hosting, website builders, and online business tools.",
+title:"Web & Hosting Tools",
+desc:"Website builders, hosting, and online business tools.",
 link:"/categories/web-tools"
 },
 
 {
 icon:"📱",
-title:"Best Tech Gear",
+title:"Tech Gear",
 desc:"Laptops, accessories, and smart technology.",
 link:"/categories/laptops"
 }
@@ -424,35 +367,136 @@ className="rounded-3xl bg-white p-8 shadow-sm transition hover:-translate-y-2 ho
 
 
 <div className="text-4xl">
-
 {item.icon}
+</div>
+
+
+<h3 className="mt-5 text-xl font-black">
+{item.title}
+</h3>
+
+
+<p className="mt-3 text-slate-600">
+{item.desc}
+</p>
+
+
+<span className="mt-5 inline-block font-bold text-blue-600">
+Explore →
+</span>
+
+
+</Link>
+
+
+))}
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+
+{/* TRAVEL HUB */}
+
+<section className="bg-gradient-to-br from-cyan-700 via-blue-700 to-sky-900 px-6 py-20 text-white">
+
+
+<div className="mx-auto max-w-6xl">
+
+
+<div className="text-center">
+
+
+<h2 className="text-4xl font-black md:text-5xl">
+✈️ NorthSky Travel Hub
+</h2>
+
+
+<p className="mx-auto mt-5 max-w-3xl text-lg text-blue-100">
+
+Compare flights, hotels, car rentals, and travel tools
+with NorthSky's travel recommendations.
+
+</p>
+
 
 </div>
 
 
 
-<h3 className="mt-5 text-xl font-black">
 
+<div className="mt-12 grid gap-6 md:grid-cols-4">
+
+
+{[
+
+{
+icon:"✈️",
+title:"Flights",
+desc:"Compare flight prices worldwide.",
+link:"/travel/flights"
+},
+
+{
+icon:"🏨",
+title:"Hotels",
+desc:"Find accommodations and deals.",
+link:"/travel/hotels"
+},
+
+{
+icon:"🚗",
+title:"Car Rentals",
+desc:"Book vehicles for your trips.",
+link:"/travel/cars"
+},
+
+{
+icon:"🌎",
+title:"Travel Guides",
+desc:"Destinations, apps, and travel tech.",
+link:"/travel/guides"
+}
+
+].map((item)=>(
+
+
+<Link
+
+key={item.title}
+
+href={item.link}
+
+className="rounded-3xl bg-white/10 p-7 backdrop-blur transition hover:-translate-y-2 hover:bg-white/20"
+
+>
+
+
+<div className="text-4xl">
+{item.icon}
+</div>
+
+
+<h3 className="mt-4 text-xl font-black">
 {item.title}
-
 </h3>
 
 
-
-<p className="mt-3 text-slate-600">
-
+<p className="mt-2 text-sm text-blue-100">
 {item.desc}
-
 </p>
 
 
-
-<span className="mt-5 inline-block font-bold text-blue-600">
-
+<span className="mt-4 block font-bold">
 Explore →
-
 </span>
-
 
 
 </Link>
@@ -464,26 +508,43 @@ Explore →
 </div>
 
 
+
+<div className="mt-12 rounded-3xl bg-white p-8 text-slate-900">
+
+
+<h3 className="text-center text-3xl font-black">
+Travel Deals Search
+</h3>
+
+
+<div
+id="travelpayouts-widget"
+className="mt-8 min-h-[250px]"
+>
+
+<p className="text-center text-slate-500">
+Travel search widget loading...
+</p>
+
+
 </div>
 
+
+</div>
+
+
+</div>
+
+
 </section>
-
-
-
-
-
-
-{/* TRENDING TOOLS */}
-
+{/* TRENDING AI TOOLS */}
 
 <section
 id="tools"
 className="px-6 py-20"
 >
 
-
 <div className="mx-auto max-w-7xl">
-
 
 
 <div className="flex items-center justify-between">
@@ -491,31 +552,22 @@ className="px-6 py-20"
 
 <div>
 
-
 <h2 className="text-4xl font-black">
-
 🔥 Trending AI Tools
-
 </h2>
 
 
 <p className="mt-2 text-slate-600">
-
-Popular tools readers are exploring this week.
-
+Popular AI software and productivity tools people are exploring.
 </p>
-
 
 </div>
 
 
 
 <Link
-
 href="/all-tools"
-
 className="font-bold text-blue-600 hover:underline"
-
 >
 
 View All →
@@ -523,10 +575,7 @@ View All →
 </Link>
 
 
-
 </div>
-
-
 
 
 
@@ -549,7 +598,6 @@ className="rounded-3xl border bg-white p-7 transition hover:-translate-y-2 hover
 >
 
 
-
 <div className="flex justify-between">
 
 
@@ -568,7 +616,6 @@ className="rounded-3xl border bg-white p-7 transition hover:-translate-y-2 hover
 </span>
 
 
-
 </div>
 
 
@@ -582,7 +629,6 @@ className="rounded-3xl border bg-white p-7 transition hover:-translate-y-2 hover
 
 
 
-
 <p className="mt-3 line-clamp-3 text-slate-600">
 
 {tool.description}
@@ -591,13 +637,11 @@ className="rounded-3xl border bg-white p-7 transition hover:-translate-y-2 hover
 
 
 
-
 <div className="mt-5 font-bold text-blue-600">
 
-Read Full Review →
+Read Review →
 
 </div>
-
 
 
 </Link>
@@ -620,7 +664,7 @@ Read Full Review →
 
 
 
-{/* CATEGORIES */}
+{/* EXPLORE CATEGORIES */}
 
 
 <section className="bg-slate-50 px-6 py-20">
@@ -638,7 +682,7 @@ Explore Categories
 
 <p className="mt-3 text-center text-slate-600">
 
-Find the right technology for your needs.
+Find the right tools, software, and technology solutions.
 
 </p>
 
@@ -676,12 +720,10 @@ className="rounded-2xl bg-white p-6 text-center font-bold shadow-sm transition h
 </div>
 
 
-
 </Link>
 
 
 ))}
-
 
 
 </div>
@@ -691,13 +733,20 @@ className="rounded-2xl bg-white p-6 text-center font-bold shadow-sm transition h
 
 
 </section>
+
+
+
+
+
+
+
 {/* LATEST REVIEWS */}
+
 
 <section className="px-6 py-20">
 
 
 <div className="mx-auto max-w-7xl">
-
 
 
 <div className="flex items-end justify-between">
@@ -714,7 +763,7 @@ className="rounded-2xl bg-white p-6 text-center font-bold shadow-sm transition h
 
 <p className="mt-2 text-slate-600">
 
-New technology reviews and expert recommendations.
+New AI, software, and technology reviews from NorthSky.
 
 </p>
 
@@ -734,7 +783,6 @@ className="font-bold text-blue-600 hover:underline"
 View All Reviews →
 
 </Link>
-
 
 
 </div>
@@ -761,13 +809,11 @@ className="rounded-3xl border bg-white p-8 transition hover:-translate-y-2 hover
 >
 
 
-
 <div className="text-sm font-bold text-blue-600">
 
-LATEST REVIEW
+FEATURED REVIEW
 
 </div>
-
 
 
 
@@ -776,7 +822,6 @@ LATEST REVIEW
 {tool.name}
 
 </h3>
-
 
 
 
@@ -810,7 +855,6 @@ Rating
 </div>
 
 
-
 </Link>
 
 
@@ -824,19 +868,9 @@ Rating
 
 
 </section>
-
-
-
-
-
-
-
-
 {/* FEATURED COMPARISONS */}
 
-
 <section className="bg-slate-50 px-6 py-20">
-
 
 <div className="mx-auto max-w-6xl">
 
@@ -845,9 +879,7 @@ Rating
 
 
 <h2 className="text-4xl font-black">
-
 ⚖️ Compare Technology
-
 </h2>
 
 
@@ -856,7 +888,7 @@ Rating
 
 href="/comparisons"
 
-className="font-bold text-blue-600"
+className="font-bold text-blue-600 hover:underline"
 
 >
 
@@ -883,10 +915,9 @@ key={item.slug}
 
 href={`/comparisons/${item.slug}`}
 
-className="rounded-3xl bg-white p-8 shadow-sm transition hover:shadow-xl"
+className="rounded-3xl bg-white p-8 shadow-sm transition hover:-translate-y-2 hover:shadow-xl"
 
 >
-
 
 
 <h3 className="text-2xl font-black">
@@ -894,8 +925,6 @@ className="rounded-3xl bg-white p-8 shadow-sm transition hover:shadow-xl"
 {item.title}
 
 </h3>
-
-
 
 
 <p className="mt-3 text-slate-600">
@@ -906,7 +935,6 @@ className="rounded-3xl bg-white p-8 shadow-sm transition hover:shadow-xl"
 
 
 
-
 <span className="mt-5 inline-block font-bold text-blue-600">
 
 Compare Now →
@@ -914,12 +942,10 @@ Compare Now →
 </span>
 
 
-
 </Link>
 
 
 ))}
-
 
 
 </div>
@@ -956,7 +982,7 @@ Compare Now →
 
 <p className="mt-3 text-center text-slate-600">
 
-Expert guides to help you choose better technology.
+Expert recommendations to help you choose better technology.
 
 </p>
 
@@ -967,20 +993,25 @@ Expert guides to help you choose better technology.
 <div className="mt-10 grid gap-6 md:grid-cols-3">
 
 
-
 {[
 
 "Best AI Tools For Business 2026",
 
 "Best VPNs In Canada 2026",
 
-"Best Productivity Software 2026",
+"Best Productivity Software",
 
 "Best Laptops Under $1000",
 
 "Best Website Builders",
 
-"Best Cloud Storage Services"
+"Best Cloud Storage Services",
+
+"Best Travel Apps 2026",
+
+"Best Travel Credit Cards",
+
+"Best Travel Accessories"
 
 
 ].map((guide)=>(
@@ -995,7 +1026,6 @@ href="/guides"
 className="rounded-2xl bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
 
 >
-
 
 
 <h3 className="font-black">
@@ -1013,12 +1043,10 @@ Read Guide →
 </span>
 
 
-
 </Link>
 
 
 ))}
-
 
 
 </div>
@@ -1028,7 +1056,16 @@ Read Guide →
 
 
 </section>
+
+
+
+
+
+
+
+
 {/* EDITORIAL AUTHORITY */}
+
 
 <section className="px-6 py-20">
 
@@ -1037,9 +1074,7 @@ Read Guide →
 
 
 <div className="text-5xl">
-
 🔬
-
 </div>
 
 
@@ -1056,9 +1091,9 @@ How NorthSky Reviews Works
 
 <p className="mx-auto mt-5 max-w-3xl text-lg text-slate-300">
 
-We research, test, and compare AI tools, software,
-and technology products to help you make smarter
-buying decisions.
+We research, compare, and analyze AI tools,
+software, technology products, and travel services
+to help people make smarter buying decisions.
 
 </p>
 
@@ -1073,16 +1108,14 @@ buying decisions.
 <div>
 
 <h3 className="text-xl font-black">
-
-Hands-On Testing
-
+Hands-On Research
 </h3>
 
 
 <p className="mt-3 text-sm text-slate-400">
 
-We analyze features, performance, usability,
-and real-world results.
+We evaluate features, usability, pricing,
+and real-world performance.
 
 </p>
 
@@ -1095,16 +1128,14 @@ and real-world results.
 <div>
 
 <h3 className="text-xl font-black">
-
-Data Comparison
-
+Data Comparisons
 </h3>
 
 
 <p className="mt-3 text-sm text-slate-400">
 
-We compare pricing, features, and value
-across competing products.
+We compare products, services,
+and alternatives to find the best options.
 
 </p>
 
@@ -1114,26 +1145,22 @@ across competing products.
 
 
 
-
 <div>
 
 <h3 className="text-xl font-black">
-
 Transparency
-
 </h3>
 
 
 <p className="mt-3 text-sm text-slate-400">
 
-We clearly disclose affiliate relationships
-and maintain honest recommendations.
+Affiliate relationships are disclosed.
+Recommendations are based on value.
 
 </p>
 
 
 </div>
-
 
 
 </div>
@@ -1143,6 +1170,7 @@ and maintain honest recommendations.
 
 
 </section>
+
 
 
 
@@ -1191,6 +1219,7 @@ Affiliate Disclosure
 </h3>
 
 
+
 <p className="mt-3 text-sm text-slate-600">
 
 Some links on NorthSky Reviews are affiliate links.
@@ -1200,10 +1229,11 @@ at no extra cost to you.
 </p>
 
 
+
 <p className="mt-2 text-sm text-slate-500">
 
-Our recommendations are based on research,
-testing, and product value.
+Our reviews are based on research,
+testing, comparisons, and product value.
 
 </p>
 
@@ -1212,28 +1242,18 @@ testing, and product value.
 
 
 </section>
-
-
-
-
-
-
-
-
 {/* FOOTER */}
-
 
 <footer className="border-t bg-slate-950 px-6 py-16 text-white">
 
 
-<div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-4">
+<div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-5">
 
 
 
 
 
 {/* BRAND */}
-
 
 <div>
 
@@ -1243,24 +1263,20 @@ testing, and product value.
 NorthSky
 
 <span className="text-blue-400">
-
 .
-
 </span>
-
 
 </h2>
 
 
 
-
 <p className="mt-4 text-sm text-slate-400">
 
-Independent AI, software, and technology
-reviews helping people choose better tools.
+Independent AI, software, technology,
+and travel reviews helping people choose
+better products and services.
 
 </p>
-
 
 
 </div>
@@ -1271,9 +1287,7 @@ reviews helping people choose better tools.
 
 
 
-
 {/* REVIEWS */}
-
 
 <div>
 
@@ -1289,46 +1303,30 @@ Reviews
 
 
 <li>
-
 <Link href="/reviews">
-
 Latest Reviews
-
 </Link>
-
 </li>
 
 
 <li>
-
 <Link href="/comparisons">
-
 Comparisons
-
 </Link>
-
 </li>
 
 
 <li>
-
 <Link href="/guides">
-
 Buying Guides
-
 </Link>
-
 </li>
 
 
 <li>
-
 <Link href="/all-tools">
-
 All Tools
-
 </Link>
-
 </li>
 
 
@@ -1346,7 +1344,6 @@ All Tools
 
 {/* CATEGORIES */}
 
-
 <div>
 
 
@@ -1362,46 +1359,86 @@ Categories
 
 
 <li>
-
 <Link href="/categories/ai">
-
 AI Tools
-
 </Link>
-
 </li>
 
 
 <li>
-
 <Link href="/categories/software">
-
 Software
-
 </Link>
-
 </li>
 
 
 <li>
-
 <Link href="/categories/vpn">
-
 VPNs
-
 </Link>
-
 </li>
 
 
 <li>
-
 <Link href="/categories/laptops">
-
 Technology
-
 </Link>
+</li>
 
+
+</ul>
+
+
+</div>
+
+
+
+
+
+
+
+
+{/* TRAVEL */}
+
+<div>
+
+
+<h3 className="font-black">
+
+Travel
+
+</h3>
+
+
+
+<ul className="mt-4 space-y-3 text-sm text-slate-400">
+
+
+<li>
+<Link href="/travel">
+Travel Deals
+</Link>
+</li>
+
+
+<li>
+<Link href="/travel/flights">
+Flights
+</Link>
+</li>
+
+
+<li>
+<Link href="/travel/hotels">
+Hotels
+</Link>
+</li>
+
+
+<li>
+<Link href="/travel/guides">
+Travel Guides
+</Link>
 </li>
 
 
@@ -1419,7 +1456,6 @@ Technology
 
 {/* COMPANY */}
 
-
 <div>
 
 
@@ -1435,46 +1471,30 @@ Company
 
 
 <li>
-
 <Link href="/about">
-
 About
-
 </Link>
-
 </li>
 
 
 <li>
-
 <Link href="/methodology">
-
 Methodology
-
 </Link>
-
 </li>
 
 
 <li>
-
 <Link href="/affiliate-disclosure">
-
 Affiliate Disclosure
-
 </Link>
-
 </li>
 
 
 <li>
-
 <Link href="/contact">
-
 Contact
-
 </Link>
-
 </li>
 
 
@@ -1482,8 +1502,6 @@ Contact
 
 
 </div>
-
-
 
 
 
@@ -1510,10 +1528,11 @@ Contact
 </p>
 
 
+
 <p>
 
-Some links may be affiliate links. We may earn commissions
-without additional cost to you.
+Some links may be affiliate links.
+We may earn commissions at no additional cost to you.
 
 </p>
 
@@ -1529,6 +1548,19 @@ without additional cost to you.
 
 
 
+
+
+{/* TRAVELPAYOUTS SCRIPT */}
+
+<Script
+
+id="travelpayouts"
+
+strategy="afterInteractive"
+
+src="YOUR_OFFICIAL_TRAVELPAYOUTS_SCRIPT"
+
+/>
 
 
 </main>
