@@ -11,119 +11,95 @@ const baseUrl =
 export default function sitemap() {
 
 
-  const lastModified =
-    new Date();
-
-
+  const lastModified = new Date();
 
 
 
   const staticPages = [
 
-
     {
-      url: "/",
-      changeFrequency: "daily",
-      priority: 1
+      url:"",
+      changeFrequency:"daily",
+      priority:1
     },
 
-
     {
-      url: "/all-tools",
-      changeFrequency: "weekly",
-      priority: 0.9
+      url:"/all-tools",
+      changeFrequency:"weekly",
+      priority:0.9
     },
 
-
     {
-      url: "/reviews",
-      changeFrequency: "weekly",
-      priority: 0.9
+      url:"/reviews",
+      changeFrequency:"weekly",
+      priority:0.8
     },
 
-
     {
-      url: "/comparisons",
-      changeFrequency: "weekly",
-      priority: 0.85
+      url:"/comparisons",
+      changeFrequency:"weekly",
+      priority:0.8
     },
 
-
     {
-      url: "/guides",
-      changeFrequency: "weekly",
-      priority: 0.85
+      url:"/guides",
+      changeFrequency:"weekly",
+      priority:0.8
     },
 
-
     {
-      url: "/categories",
-      changeFrequency: "weekly",
-      priority: 0.8
+      url:"/categories",
+      changeFrequency:"weekly",
+      priority:0.8
     },
 
-
     {
-      url: "/travel",
-      changeFrequency: "weekly",
-      priority: 0.8
+      url:"/about",
+      changeFrequency:"monthly",
+      priority:0.5
     },
 
-
     {
-      url: "/about",
-      changeFrequency: "monthly",
-      priority: 0.5
+      url:"/methodology",
+      changeFrequency:"monthly",
+      priority:0.6
     },
 
-
     {
-      url: "/methodology",
-      changeFrequency: "monthly",
-      priority: 0.6
+      url:"/affiliate-disclosure",
+      changeFrequency:"monthly",
+      priority:0.4
     },
 
-
     {
-      url: "/affiliate-disclosure",
-      changeFrequency: "monthly",
-      priority: 0.4
+      url:"/privacy",
+      changeFrequency:"yearly",
+      priority:0.3
     },
 
-
     {
-      url: "/contact",
-      changeFrequency: "monthly",
-      priority: 0.5
+      url:"/terms",
+      changeFrequency:"yearly",
+      priority:0.3
     }
-
 
   ];
 
 
 
 
-
-
-
-
-  const pages = staticPages.map((page)=>({
-
+  const pages = staticPages.map(page => ({
 
     url:
-    `${baseUrl}${page.url}`,
-
+      `${baseUrl}${page.url}`,
 
     lastModified,
 
-
     changeFrequency:
-    page.changeFrequency,
-
+      page.changeFrequency,
 
     priority:
-    page.priority
-
+      page.priority
 
   }));
 
@@ -132,32 +108,23 @@ export default function sitemap() {
 
 
 
+  // Reviews
 
-
-
-  // Individual Reviews
-
-  const reviewPages = tools.map((tool)=>({
-
+  const reviewPages =
+  tools.map(tool => ({
 
     url:
-    `${baseUrl}/reviews/${tool.slug}`,
-
+      `${baseUrl}/reviews/${tool.slug}`,
 
     lastModified,
 
-
     changeFrequency:
-    "monthly",
-
+      "monthly",
 
     priority:
-    0.8
-
+      0.8
 
   }));
-
-
 
 
 
@@ -167,27 +134,21 @@ export default function sitemap() {
 
   // Categories
 
-  const categoryPages = categories.map((category)=>({
-
+  const categoryPages =
+  categories.map(category => ({
 
     url:
-    `${baseUrl}/categories/${category.slug}`,
-
+      `${baseUrl}/categories/${category.slug}`,
 
     lastModified,
 
-
     changeFrequency:
-    "weekly",
-
+      "weekly",
 
     priority:
-    0.75
-
+      0.75
 
   }));
-
-
 
 
 
@@ -197,23 +158,19 @@ export default function sitemap() {
 
   // Comparisons
 
-  const comparisonPages = comparisons.map((item)=>({
-
+  const comparisonPages =
+  comparisons.map(item => ({
 
     url:
-    `${baseUrl}/comparisons/${item.slug}`,
-
+      `${baseUrl}/comparisons/${item.slug}`,
 
     lastModified,
 
-
     changeFrequency:
-    "monthly",
-
+      "monthly",
 
     priority:
-    0.8
-
+      0.8
 
   }));
 
@@ -223,31 +180,23 @@ export default function sitemap() {
 
 
 
+  // Guides
 
-
-  // Buying Guides
-
-  const guidePages = guides.map((guide)=>({
-
+  const guidePages =
+  guides.map(guide => ({
 
     url:
-    `${baseUrl}/guides/${guide.slug}`,
-
+      `${baseUrl}/guides/${guide.slug}`,
 
     lastModified,
 
-
     changeFrequency:
-    "weekly",
-
+      "weekly",
 
     priority:
-    0.85
-
+      0.85
 
   }));
-
-
 
 
 
@@ -268,6 +217,5 @@ export default function sitemap() {
     ...guidePages
 
   ];
-
 
 }
