@@ -1,300 +1,400 @@
 export const guides = [
 
-{
-slug:"best-ai-tools-2026",
+  {
+    slug: "best-ai-tools-2026",
 
-title:"Best AI Tools 2026 – Top Artificial Intelligence Software",
+    title:
+      "Best AI Tools 2026 – Top Artificial Intelligence Software",
 
-description:
-"Discover the best AI tools for business, productivity, coding, marketing, writing, automation, and everyday tasks.",
+    description:
+      "Discover the best AI tools for business, productivity, coding, writing, automation, and everyday tasks.",
 
-category:"AI Tools",
+    category:
+      "AI Tools",
 
-products:[
+    keywords:[
+      "best AI tools 2026",
+      "AI software",
+      "AI productivity tools",
+      "ChatGPT alternatives"
+    ],
 
-{
-name:"ChatGPT",
-rating:9.8,
-description:
-"AI assistant for writing, research, coding, analysis, automation, and productivity.",
-link:"https://chat.openai.com"
-},
 
-{
-name:"Claude",
-rating:9.5,
-description:
-"Advanced AI assistant for reasoning, documents, writing, and professional workflows.",
-link:"https://claude.ai"
-},
+    products:[
 
-{
-name:"Perplexity AI",
-rating:9.2,
-description:
-"AI search platform designed for research and information discovery.",
-link:"https://www.perplexity.ai"
-}
+      {
+        name:"ChatGPT",
 
-]
+        rating:9.8,
 
-},
+        description:
+        "The leading AI assistant for writing, coding, research, business tasks, and productivity.",
 
+        link:
+        "https://chat.openai.com"
+      },
 
 
-{
-slug:"best-ai-tools-business-2026",
+      {
+        name:"Claude",
 
-title:"Best AI Tools For Business 2026",
+        rating:9.5,
 
-description:
-"The best AI software for businesses to automate workflows, improve productivity, marketing, customer support, and operations.",
+        description:
+        "Advanced AI assistant known for reasoning, writing quality, and long-form analysis.",
 
-category:"Business AI",
+        link:
+        "https://claude.ai"
+      },
 
-products:[
 
-{
-name:"ChatGPT Team",
-rating:9.7,
-description:
-"Business AI assistant for teams, documents, research, and automation.",
-link:"https://chat.openai.com"
-},
+      {
+        name:"Perplexity AI",
 
-{
-name:"Jasper AI",
-rating:9.1,
-description:
-"AI marketing platform for content teams and businesses.",
-link:"https://www.jasper.ai"
-},
+        rating:9.2,
 
-{
-name:"Zapier AI",
-rating:9.0,
-description:
-"Automation platform connecting business apps with AI workflows.",
-link:"https://zapier.com"
-}
+        description:
+        "AI search platform designed for research, answers, and information discovery.",
 
-]
+        link:
+        "https://www.perplexity.ai"
+      }
 
-},
+    ]
 
+  },
 
 
 
-{
-slug:"best-ai-writing-tools",
 
-title:"Best AI Writing Tools 2026",
 
-description:
-"Compare the best AI writing assistants for blogs, marketing, emails, SEO content, and professional writing.",
+  {
+    slug:
+    "best-ai-tools-for-business",
 
-category:"AI Tools",
 
-products:[
+    title:
+    "Best AI Tools For Business 2026",
 
-{
-name:"Jasper AI",
-rating:9.2,
-description:
-"AI writing platform designed for marketing teams.",
-link:"https://www.jasper.ai"
-},
 
-{
-name:"Copy.ai",
-rating:9.0,
-description:
-"AI copywriting assistant for sales and marketing content.",
-link:"https://www.copy.ai"
-},
+    description:
+    "Compare the best AI business tools for automation, marketing, customer support, productivity, and workflow improvement.",
 
-{
-name:"Writesonic",
-rating:8.8,
-description:
-"AI writing tool for articles, SEO, and content creation.",
-link:"https://writesonic.com"
-}
 
-]
+    category:
+    "Business AI",
 
-},
 
+    products:[
 
 
+      {
+        name:"ChatGPT Team",
 
-{
-slug:"best-vpns-canada",
+        rating:9.7,
 
-title:"Best VPNs In Canada 2026 – Privacy, Streaming & Security",
+        description:
+        "AI workspace for teams needing writing, research, coding, and business assistance.",
 
-description:
-"Compare the best VPN services in Canada for privacy, streaming, security, and online protection.",
+        link:
+        "https://chat.openai.com"
+      },
 
-category:"VPN",
 
-products:[
+      {
+        name:"Jasper AI",
 
-{
-name:"NordVPN",
-rating:9.5,
-description:
-"Fast VPN with advanced security features and streaming support.",
-link:"https://nordvpn.com"
-},
+        rating:9.1,
 
-{
-name:"Surfshark",
-rating:9.2,
-description:
-"Affordable VPN with unlimited device connections.",
-link:"https://surfshark.com"
-},
+        description:
+        "AI marketing platform for content creation and brand campaigns.",
 
-{
-name:"ExpressVPN",
-rating:9.0,
-description:
-"Premium VPN focused on speed and reliability.",
-link:"https://expressvpn.com"
-}
+        link:
+        "https://www.jasper.ai"
+      },
 
-]
 
-},
+      {
+        name:"Zapier AI",
 
+        rating:9.0,
 
+        description:
+        "Automation platform connecting apps and creating AI-powered workflows.",
 
+        link:
+        "https://zapier.com"
+      }
 
-{
-slug:"best-laptops-under-1000",
+    ]
 
-title:"Best Laptops Under $1000 In 2026",
+  },
 
-description:
-"The best affordable laptops for students, professionals, creators, and everyday users.",
 
-category:"Laptops",
 
-products:[
 
-{
-name:"MacBook Air",
-rating:9.6,
-description:
-"Premium lightweight laptop with excellent battery life and performance.",
-link:"https://apple.com/macbook-air"
-},
 
-{
-name:"ASUS Zenbook",
-rating:9.0,
-description:
-"Portable Windows laptop with strong performance.",
-link:"https://asus.com"
-},
 
-{
-name:"Lenovo IdeaPad",
-rating:8.7,
-description:
-"Affordable laptop for school, work, and daily use.",
-link:"https://lenovo.com"
-}
+  {
+    slug:
+    "best-vpns-canada",
 
-]
 
-},
+    title:
+    "Best VPNs In Canada 2026 – Privacy, Streaming & Security",
 
 
+    description:
+    "Find the best VPN services in Canada for privacy, streaming, security, speed, and value.",
 
 
-{
-slug:"best-travel-apps",
+    category:
+    "VPN",
 
-title:"Best Travel Apps 2026",
 
-description:
-"The best travel apps for flights, hotels, navigation, budgeting, and trip planning.",
+    products:[
 
-category:"Travel",
 
-products:[
+      {
+        name:"NordVPN",
 
-{
-name:"Google Maps",
-rating:9.5,
-description:
-"Navigation and travel planning app used worldwide.",
-link:"https://maps.google.com"
-},
+        rating:9.5,
 
-{
-name:"Booking.com",
-rating:9.1,
-description:
-"Hotel and accommodation booking platform.",
-link:"https://booking.com"
-},
+        description:
+        "Fast VPN with strong privacy features, security tools, and streaming support.",
 
-{
-name:"Tripadvisor",
-rating:8.9,
-description:
-"Travel reviews, restaurants, hotels, and experiences.",
-link:"https://tripadvisor.com"
-}
+        link:
+        "https://nordvpn.com"
+      },
 
-]
 
-},
+      {
+        name:"Surfshark",
 
+        rating:9.2,
 
+        description:
+        "Affordable VPN with unlimited device connections.",
 
+        link:
+        "https://surfshark.com"
+      },
 
-{
-slug:"best-website-builders-2026",
 
-title:"Best Website Builders 2026",
+      {
+        name:"ExpressVPN",
 
-description:
-"Compare the best website builders for businesses, creators, ecommerce, and online stores.",
+        rating:9.0,
 
-category:"Website Tools",
+        description:
+        "Premium VPN focused on speed, reliability, and simplicity.",
 
-products:[
+        link:
+        "https://expressvpn.com"
+      }
 
-{
-name:"Shopify",
-rating:9.5,
-description:
-"Ecommerce platform for building online stores.",
-link:"https://shopify.com"
-},
+    ]
 
-{
-name:"Webflow",
-rating:9.2,
-description:
-"Professional website builder with advanced design controls.",
-link:"https://webflow.com"
-},
+  },
 
-{
-name:"Wix",
-rating:8.8,
-description:
-"Beginner-friendly website builder.",
-link:"https://wix.com"
-}
 
-]
 
-}
+
+
+
+  {
+    slug:
+    "best-laptops-under-1000",
+
+
+    title:
+    "Best Laptops Under $1000 In 2026",
+
+
+    description:
+    "The best affordable laptops for students, professionals, creators, and everyday users.",
+
+
+    category:
+    "Laptops",
+
+
+    products:[
+
+
+      {
+        name:"MacBook Air",
+
+        rating:9.6,
+
+        description:
+        "Lightweight laptop with excellent battery life and performance.",
+
+        link:
+        "https://apple.com/macbook-air"
+      },
+
+
+      {
+        name:"ASUS Zenbook",
+
+        rating:9.0,
+
+        description:
+        "Premium Windows laptop with strong performance and portability.",
+
+        link:
+        "https://asus.com"
+      },
+
+
+      {
+        name:"Lenovo IdeaPad",
+
+        rating:8.7,
+
+        description:
+        "Affordable laptop for school, work, and everyday computing.",
+
+        link:
+        "https://lenovo.com"
+      }
+
+    ]
+
+  },
+
+
+
+
+
+
+  {
+    slug:
+    "best-website-builders-2026",
+
+
+    title:
+    "Best Website Builders 2026",
+
+
+    description:
+    "Compare the best website builders for businesses, creators, ecommerce stores, and startups.",
+
+
+    category:
+    "Website Tools",
+
+
+    products:[
+
+
+      {
+        name:"Shopify",
+
+        rating:9.5,
+
+        description:
+        "Leading ecommerce platform for building and scaling online stores.",
+
+        link:
+        "https://shopify.com"
+      },
+
+
+      {
+        name:"Webflow",
+
+        rating:9.2,
+
+        description:
+        "Professional website builder with advanced design controls.",
+
+        link:
+        "https://webflow.com"
+      },
+
+
+      {
+        name:"Wix",
+
+        rating:8.8,
+
+        description:
+        "Beginner-friendly website builder with templates and tools.",
+
+        link:
+        "https://wix.com"
+      }
+
+    ]
+
+  },
+
+
+
+
+
+  {
+    slug:
+    "best-travel-apps",
+
+
+    title:
+    "Best Travel Apps 2026 – Apps Every Traveler Needs",
+
+
+    description:
+    "Discover the best travel apps for flights, hotels, maps, communication, and international trips.",
+
+
+    category:
+    "Travel Technology",
+
+
+    products:[
+
+
+      {
+        name:"Google Maps",
+
+        rating:9.5,
+
+        description:
+        "Essential navigation and travel planning app.",
+
+        link:
+        "https://maps.google.com"
+      },
+
+
+      {
+        name:"Saily",
+
+        rating:9.2,
+
+        description:
+        "Affordable travel eSIM service for international mobile data.",
+
+        link:
+        "https://saily.com"
+      },
+
+
+      {
+        name:"Tripadvisor",
+
+        rating:8.8,
+
+        description:
+        "Travel reviews, attractions, hotels, and recommendations.",
+
+        link:
+        "https://tripadvisor.com"
+      }
+
+    ]
+
+  }
 
 ];
