@@ -15,11 +15,8 @@ import {
 } from "@/app/data/guides";
 
 
-
 const siteUrl =
 "https://northsky-reviews.vercel.app";
-
-
 
 
 
@@ -44,6 +41,116 @@ export async function generateStaticParams(){
 export async function generateMetadata({params}){
 
 
+const {slug} = await params;
+
+
+
+const category =
+categories.find(
+(item)=>item.slug === slug
+);
+
+
+
+
+
+if(!category){
+
+return {
+
+title:
+"Category Not Found | NorthSky Reviews"
+
+};
+
+}
+
+
+
+
+
+
+return {
+
+
+title:
+`Best ${category.name} Tools 2026 | Reviews & Rankings | NorthSky Reviews`,
+
+
+
+description:
+`Explore the best ${category.name} tools in 2026. Compare ratings, features, pricing, alternatives and expert recommendations.`,
+
+
+
+keywords:[
+
+`best ${category.name} tools`,
+
+`${category.name} reviews`,
+
+`${category.name} software`,
+
+`${category.name} comparison`
+
+],
+
+
+
+alternates:{
+
+canonical:
+`${siteUrl}/categories/${category.slug}`
+
+},
+
+
+
+openGraph:{
+
+
+title:
+`Best ${category.name} Tools 2026`,
+
+
+
+description:
+`NorthSky Reviews rankings and comparisons for ${category.name} software.`,
+
+
+
+url:
+`${siteUrl}/categories/${category.slug}`,
+
+
+
+siteName:
+"NorthSky Reviews",
+
+
+type:
+"website"
+
+
+}
+
+
+};
+
+
+}
+
+
+
+
+
+
+
+
+
+export default async function CategoryPage({params}){
+
+
 const {slug} =
 await params;
 
@@ -56,145 +163,12 @@ categories.find(
 
 
 
-
-
-if(!category){
-
-
-return {
-
-title:
-"Category Not Found | NorthSky Reviews"
-
-};
-
-
-}
-
-
-
-
-
-
-
-return {
-
-
-
-title:
-
-`Best ${category.name} Tools 2026 | Reviews, Comparisons & Rankings | NorthSky Reviews`,
-
-
-
-
-
-
-description:
-
-`Find the best ${category.name} tools in 2026. Compare features, pricing, ratings, reviews, alternatives, and expert recommendations from NorthSky Reviews.`,
-
-
-
-
-
-
-keywords:[
-
-
-`best ${category.name} tools 2026`,
-
-`${category.name} reviews`,
-
-`${category.name} software`,
-
-`${category.name} comparison`,
-
-`top ${category.name} apps`
-
-
-],
-
-
-
-
-
-
-alternates:{
-
-
-canonical:
-
-`${siteUrl}/categories/${category.slug}`
-
-
-},
-
-
-
-
-
-
-
-openGraph:{
-
-
-title:
-
-`Best ${category.name} Tools 2026`,
-
-
-
-
-description:
-
-`Expert reviews and comparisons of the best ${category.name} tools.`,
-
-
-
-
-url:
-
-`${siteUrl}/categories/${category.slug}`,
-
-
-
-
-siteName:
-
-"NorthSky Reviews"
-
-
-
-}
-
-
-
-};
-
-
-}
-export default async function CategoryPage({params}){
-
-
-const {slug}=await params;
-
-
-
-
-const category =
-categories.find(
-(item)=>item.slug === slug
-);
-
-
-
-
 if(!category){
 
 notFound();
 
 }
+
 
 
 
@@ -214,7 +188,6 @@ category.name.toLowerCase()
 
 
 
-
 const categoryGuides =
 guides.filter(
 
@@ -229,13 +202,12 @@ category.name.toLowerCase()
 
 
 
-
 const categoryComparisons =
 comparisons.filter(
 
-(comparison)=>
+(item)=>
 
-comparison.category?.toLowerCase() ===
+item.category?.toLowerCase() ===
 category.name.toLowerCase()
 
 );
@@ -244,8 +216,8 @@ category.name.toLowerCase()
 
 
 
-
 const featuredTools =
+
 [...categoryTools]
 
 .sort(
@@ -265,32 +237,8 @@ const featuredTools =
 
 
 
-return (
 
-
-<main className="
-min-h-screen
-bg-white
-text-slate-900
-">
-
-
-
-
-
-
-{/* CATEGORY SCHEMA */}
-
-
-
-<script
-
-type="application/ld+json"
-
-dangerouslySetInnerHTML={{
-
-
-__html:JSON.stringify({
+const schema = {
 
 "@context":
 "https://schema.org",
@@ -301,43 +249,28 @@ __html:JSON.stringify({
 
 
 
-
-"name":
-
+name:
 `Best ${category.name} Tools 2026`,
 
 
 
-
-
-"description":
-
-`NorthSky Reviews rankings and reviews for the best ${category.name} tools.`,
-
-
-
-
-
-
-"url":
-
+url:
 `${siteUrl}/categories/${category.slug}`,
 
 
 
+description:
+`NorthSky Reviews rankings for ${category.name}.`,
 
 
 
-
-"mainEntity":{
-
+mainEntity:{
 
 "@type":
 "ItemList",
 
 
-
-"itemListElement":
+itemListElement:
 
 featuredTools.map((tool,index)=>(
 
@@ -346,30 +279,50 @@ featuredTools.map((tool,index)=>(
 "@type":
 "ListItem",
 
-
-"position":
-index+1,
-
+position:
+index + 1,
 
 
-"name":
+name:
 tool.name,
 
 
-
-"url":
-
+url:
 `${siteUrl}/reviews/${tool.slug}`
 
 }
 
 ))
 
+
 }
 
 
+};
 
-})
+
+
+
+
+
+return (
+
+<main className="
+min-h-screen
+bg-white
+text-slate-900
+">
+
+
+
+<script
+
+type="application/ld+json"
+
+dangerouslySetInnerHTML={{
+
+__html:
+JSON.stringify(schema)
 
 }}
 
@@ -383,11 +336,6 @@ tool.name,
 
 
 
-
-{/* BREADCRUMBS */}
-
-
-
 <div className="
 mx-auto
 max-w-6xl
@@ -398,21 +346,14 @@ text-slate-500
 ">
 
 
-
 <Link
-
 href="/"
-
-className="
-hover:text-blue-600
-"
-
+className="hover:text-blue-600"
 >
 
 Home
 
 </Link>
-
 
 
 <span className="mx-2">
@@ -424,13 +365,8 @@ Home
 
 
 <Link
-
 href="/categories"
-
-className="
-hover:text-blue-600
-"
-
+className="hover:text-blue-600"
 >
 
 Categories
@@ -454,7 +390,6 @@ Categories
 </span>
 
 
-
 </div>
 
 
@@ -463,9 +398,6 @@ Categories
 
 
 
-
-
-{/* HERO */}
 
 
 
@@ -476,10 +408,9 @@ from-slate-950
 via-indigo-950
 to-blue-900
 px-6
-py-20
+py-24
 text-white
 ">
-
 
 
 <div className="
@@ -489,18 +420,13 @@ max-w-6xl
 
 
 
-
-
 <div className="
 text-6xl
 ">
 
-{category.icon}
+{category.icon || "🚀"}
 
 </div>
-
-
-
 
 
 
@@ -509,15 +435,12 @@ text-6xl
 mt-6
 text-5xl
 font-black
-md:text-6xl
+md:text-7xl
 ">
 
 Best {category.name} Tools 2026
 
 </h1>
-
-
-
 
 
 
@@ -529,162 +452,164 @@ text-xl
 text-slate-300
 ">
 
-Explore expert reviews, rankings,
-comparisons, and buying guides for
-the best {category.name.toLowerCase()}
-tools available today.
+Discover expert reviews,
+comparisons, rankings, and
+buying guides for the best
+{category.name.toLowerCase()}
+software.
 
 </p>
+          <div className="
+        mt-10
+        grid
+        gap-5
+        md:grid-cols-3
+        ">
 
 
+          <div className="
+          rounded-3xl
+          bg-white/10
+          p-6
+          backdrop-blur
+          ">
 
+            <p className="
+            text-4xl
+            font-black
+            ">
 
+              {categoryTools.length}+
 
+            </p>
 
 
+            <p className="
+            mt-2
+            text-slate-300
+            ">
 
-<div className="
-mt-10
-grid
-gap-5
-md:grid-cols-3
-">
+              Tools Reviewed
 
+            </p>
 
 
+          </div>
 
 
-<div className="
-rounded-3xl
-bg-white/10
-p-6
-">
 
 
-<p className="
-text-4xl
-font-black
-">
 
-{categoryTools.length}+
 
-</p>
 
+          <div className="
+          rounded-3xl
+          bg-white/10
+          p-6
+          backdrop-blur
+          ">
 
-<p className="
-text-slate-300
-">
 
-Tools Reviewed
+            <p className="
+            text-4xl
+            font-black
+            ">
 
-</p>
+              2026
 
+            </p>
 
-</div>
 
+            <p className="
+            mt-2
+            text-slate-300
+            ">
 
+              Updated Rankings
 
+            </p>
 
 
+          </div>
 
 
-<div className="
-rounded-3xl
-bg-white/10
-p-6
-">
 
 
-<p className="
-text-4xl
-font-black
-">
 
-2026
 
-</p>
 
+          <div className="
+          rounded-3xl
+          bg-white/10
+          p-6
+          backdrop-blur
+          ">
 
-<p className="
-text-slate-300
-">
 
-Updated Rankings
+            <p className="
+            text-4xl
+            font-black
+            ">
 
-</p>
+              ⭐
 
+            </p>
 
-</div>
 
+            <p className="
+            mt-2
+            text-slate-300
+            ">
 
+              Expert Ratings
 
+            </p>
 
 
+          </div>
 
 
-<div className="
-rounded-3xl
-bg-white/10
-p-6
-">
 
+        </div>
 
-<p className="
-text-4xl
-font-black
-">
 
-⭐
+      </div>
 
-</p>
 
+    </section>
 
-<p className="
-text-slate-300
-">
 
-Expert Ratings
 
-</p>
 
 
-</div>
 
 
 
 
-
-</div>
-
-
-
-
-
-</div>
-
-
-</section>
 {/* FEATURED TOOLS */}
+
 
 
 <section className="
 mx-auto
 max-w-7xl
 px-6
-py-16
+py-20
 ">
 
 
 <div className="
 flex
-items-center
-justify-between
+flex-col
+gap-5
+md:flex-row
+md:items-center
+md:justify-between
 ">
 
 
-
-
 <div>
+
 
 <h2 className="
 text-4xl
@@ -702,14 +627,17 @@ mt-3
 text-slate-600
 ">
 
-Our highest-rated {category.name.toLowerCase()}
-tools based on features, usability,
-and value.
+Our highest-rated tools based on
+features, performance, usability,
+and overall value.
 
 </p>
 
 
+
 </div>
+
+
 
 
 
@@ -732,12 +660,52 @@ View All Tools →
 
 
 
-
 </div>
 
 
 
 
+
+
+
+
+{featuredTools.length === 0 ? (
+
+
+<div className="
+mt-10
+rounded-3xl
+bg-slate-100
+p-10
+text-center
+">
+
+<h3 className="
+text-2xl
+font-black
+">
+
+More reviews coming soon
+
+</h3>
+
+
+<p className="
+mt-3
+text-slate-600
+">
+
+NorthSky is currently expanding this
+category with new reviews.
+
+</p>
+
+
+</div>
+
+
+
+) : (
 
 
 
@@ -748,7 +716,6 @@ grid
 gap-8
 md:grid-cols-3
 ">
-
 
 
 
@@ -810,7 +777,6 @@ text-green-600
 </span>
 
 
-
 </div>
 
 
@@ -837,6 +803,7 @@ font-black
 
 <p className="
 mt-4
+leading-7
 text-slate-600
 ">
 
@@ -851,10 +818,59 @@ text-slate-600
 
 
 <div className="
-mt-6
+mt-5
 flex
+flex-wrap
+gap-2
+">
+
+
+{tool.tags?.slice(0,3).map(tag=>(
+
+
+<span
+
+key={tag}
+
+className="
+rounded-full
+bg-slate-100
+px-3
+py-1
+text-xs
+font-bold
+text-slate-600
+"
+
+>
+
+#{tag}
+
+</span>
+
+
+))}
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div className="
+mt-7
+grid
+grid-cols-2
 gap-3
 ">
+
+
+
 
 
 <Link
@@ -862,7 +878,6 @@ gap-3
 href={`/reviews/${tool.slug}`}
 
 className="
-flex-1
 rounded-xl
 border
 px-4
@@ -882,7 +897,10 @@ Review
 
 
 
+
+
 {tool.link && (
+
 
 <a
 
@@ -893,7 +911,6 @@ target="_blank"
 rel="nofollow sponsored noopener"
 
 className="
-flex-1
 rounded-xl
 bg-blue-600
 px-4
@@ -901,11 +918,12 @@ py-3
 text-center
 font-bold
 text-white
+hover:bg-blue-700
 "
 
 >
 
-Try →
+Visit →
 
 </a>
 
@@ -914,7 +932,10 @@ Try →
 
 
 
+
+
 </div>
+
 
 
 
@@ -932,39 +953,38 @@ Try →
 </div>
 
 
+
+)}
+
+
+
 </section>
-
-
-
-
-
-
-
-
-
-{/* GUIDES */}
-
+{/* BUYING GUIDES */}
 
 
 {categoryGuides.length > 0 && (
 
-
 <section className="
 bg-slate-50
 px-6
-py-16
+py-20
+">
+
+
+<div className="
+mx-auto
+max-w-7xl
 ">
 
 
 
 <div className="
-mx-auto
-max-w-6xl
+flex
+items-center
+justify-between
 ">
 
-
-
-
+<div>
 
 <h2 className="
 text-4xl
@@ -977,18 +997,40 @@ Best {category.name} Guides
 
 
 
-
-
-
 <p className="
 mt-3
 text-slate-600
 ">
 
 Learn how to choose the right
-tools with NorthSky buying guides.
+{category.name.toLowerCase()} tools
+with expert buying guides.
 
 </p>
+
+
+</div>
+
+
+
+<Link
+
+href="/guides"
+
+className="
+font-bold
+text-blue-600
+hover:underline
+"
+
+>
+
+View Guides →
+
+</Link>
+
+
+</div>
 
 
 
@@ -1020,18 +1062,31 @@ href={`/guides/${guide.slug}`}
 className="
 rounded-3xl
 bg-white
-p-7
+p-8
 shadow-sm
 transition
-hover:-translate-y-1
-hover:shadow-lg
+hover:-translate-y-2
+hover:shadow-xl
 "
 
 >
 
 
 
+
+<div className="
+text-3xl
+">
+
+📚
+
+</div>
+
+
+
+
 <h3 className="
+mt-5
 text-xl
 font-black
 ">
@@ -1043,8 +1098,10 @@ font-black
 
 
 
+
+
 <p className="
-mt-3
+mt-4
 text-slate-600
 ">
 
@@ -1056,8 +1113,10 @@ text-slate-600
 
 
 
+
+
 <div className="
-mt-5
+mt-6
 font-bold
 text-blue-600
 ">
@@ -1065,7 +1124,6 @@ text-blue-600
 Read Guide →
 
 </div>
-
 
 
 
@@ -1077,8 +1135,9 @@ Read Guide →
 
 
 
-</div>
 
+
+</div>
 
 
 
@@ -1089,9 +1148,18 @@ Read Guide →
 
 </section>
 
-
 )}
+
+
+
+
+
+
+
+
+
 {/* COMPARISONS */}
+
 
 
 {categoryComparisons.length > 0 && (
@@ -1105,12 +1173,15 @@ py-20
 ">
 
 
-
 <div className="
 flex
-items-center
-justify-between
+flex-col
+gap-5
+md:flex-row
+md:items-center
+md:justify-between
 ">
+
 
 
 <div>
@@ -1127,16 +1198,17 @@ Compare {category.name} Tools
 
 
 
+
 <p className="
 mt-3
 text-slate-600
 ">
 
-See differences in features,
-pricing, performance, and value.
+Compare features, pricing,
+performance, and alternatives
+before choosing.
 
 </p>
-
 
 
 </div>
@@ -1157,7 +1229,7 @@ hover:underline
 
 >
 
-View All Comparisons →
+All Comparisons →
 
 </Link>
 
@@ -1178,14 +1250,16 @@ View All Comparisons →
 mt-10
 grid
 gap-6
-md:grid-cols-2
+md:grid-cols-3
 ">
 
 
 
 
 
-{categoryComparisons.slice(0,6).map((item)=>(
+{categoryComparisons
+.slice(0,6)
+.map((item)=>(
 
 
 <Link
@@ -1209,8 +1283,8 @@ hover:shadow-xl
 
 
 <div className="
-text-blue-600
 font-bold
+text-blue-600
 ">
 
 ⚖️ Comparison
@@ -1221,15 +1295,17 @@ font-bold
 
 
 
+
 <h3 className="
-mt-4
-text-2xl
+mt-5
+text-xl
 font-black
 ">
 
 {item.title}
 
 </h3>
+
 
 
 
@@ -1247,8 +1323,10 @@ text-slate-600
 
 
 
+
+
 <div className="
-mt-5
+mt-6
 font-bold
 text-blue-600
 ">
@@ -1256,6 +1334,7 @@ text-blue-600
 Compare Now →
 
 </div>
+
 
 
 
@@ -1267,7 +1346,10 @@ Compare Now →
 
 
 
+
+
 </div>
+
 
 
 
@@ -1275,6 +1357,130 @@ Compare Now →
 
 
 )}
+  {/* WHY NORTHSKY */}
+
+
+
+<section className="
+bg-slate-50
+px-6
+py-20
+">
+
+
+<div className="
+mx-auto
+max-w-6xl
+">
+
+
+
+<h2 className="
+text-center
+text-4xl
+font-black
+">
+
+Why Trust NorthSky Reviews?
+
+</h2>
+
+
+
+
+
+<div className="
+mt-10
+grid
+gap-6
+md:grid-cols-4
+">
+
+
+
+
+
+{[
+
+{
+title:"Independent Research",
+text:"We evaluate tools based on features, usability, pricing, and performance."
+},
+
+
+{
+title:"Real Comparisons",
+text:"We compare alternatives to help users make better decisions."
+},
+
+
+{
+title:"Updated Rankings",
+text:"Technology changes constantly, so rankings are refreshed regularly."
+},
+
+
+{
+title:"Expert Analysis",
+text:"Detailed reviews and guides explain what actually matters."
+}
+
+
+].map(item=>(
+
+
+<div
+
+key={item.title}
+
+className="
+rounded-3xl
+bg-white
+p-7
+shadow-sm
+"
+
+
+>
+
+
+<h3 className="
+font-black
+">
+
+{item.title}
+
+</h3>
+
+
+
+<p className="
+mt-3
+text-sm
+leading-6
+text-slate-600
+">
+
+{item.text}
+
+</p>
+
+
+</div>
+
+
+))}
+
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
 
 
 
@@ -1284,15 +1490,14 @@ Compare Now →
 
 
 
-{/* CATEGORY CTA */}
+{/* CTA */}
 
 
 
 <section className="
 px-6
-pb-20
+py-24
 ">
-
 
 
 <div className="
@@ -1301,7 +1506,7 @@ max-w-5xl
 rounded-3xl
 bg-gradient-to-r
 from-blue-600
-to-purple-600
+to-indigo-600
 p-12
 text-center
 text-white
@@ -1323,19 +1528,19 @@ Find The Best {category.name} Tools
 
 
 
-
 <p className="
 mx-auto
-mt-4
+mt-5
 max-w-2xl
 text-blue-100
 ">
 
-Explore recommended tools,
-compare options, and choose
-the right solution for your needs.
+Explore expert reviews,
+compare solutions, and discover
+the right technology for your needs.
 
 </p>
+
 
 
 
@@ -1366,6 +1571,7 @@ px-8
 py-4
 font-black
 text-blue-600
+hover:bg-slate-100
 "
 
 >
@@ -1378,6 +1584,7 @@ Browse All Tools
 
 
 
+
 <Link
 
 href="/newsletter"
@@ -1385,15 +1592,16 @@ href="/newsletter"
 className="
 rounded-xl
 border
-border-white
+border-white/40
 px-8
 py-4
 font-black
+hover:bg-white/10
 "
 
 >
 
-Get Weekly Updates
+Join Newsletter
 
 </Link>
 
@@ -1405,11 +1613,22 @@ Get Weekly Updates
 
 
 
+
 </div>
 
 
 </section>
-{/* FAQ SECTION */}
+
+
+
+
+
+
+
+
+
+{/* FAQ */}
+
 
 
 <section className="
@@ -1418,6 +1637,7 @@ max-w-5xl
 px-6
 pb-20
 ">
+
 
 
 <h2 className="
@@ -1445,13 +1665,14 @@ space-y-5
 
 {[
 
+
 {
 
 q:
 `What are the best ${category.name} tools in 2026?`,
 
 a:
-`NorthSky Reviews ranks the best ${category.name.toLowerCase()} tools based on features, pricing, usability, performance, and overall value.`
+`NorthSky ranks the best ${category.name.toLowerCase()} tools based on features, pricing, usability, performance, and overall value.`
 
 },
 
@@ -1460,10 +1681,10 @@ a:
 {
 
 q:
-`How does NorthSky review ${category.name} tools?`,
+`How does NorthSky review ${category.name} software?`,
 
 a:
-`We analyze product features, pricing, user experience, integrations, and real-world usefulness before creating recommendations.`
+`We analyze product features, pricing, reliability, integrations, and user experience before creating rankings.`
 
 },
 
@@ -1472,16 +1693,16 @@ a:
 {
 
 q:
-`Are these ${category.name} recommendations independent?`,
+`Are NorthSky recommendations independent?`,
 
 a:
-`Yes. NorthSky Reviews provides independent research and comparisons. Some links may be affiliate links that help support the site.`
+`Yes. Rankings are based on research and evaluation. Some links may be affiliate links that support the website.`
 
 }
 
 
-
 ].map(item=>(
+
 
 
 <div
@@ -1508,6 +1729,7 @@ font-black
 
 
 
+
 <p className="
 mt-3
 text-slate-600
@@ -1518,14 +1740,18 @@ text-slate-600
 </p>
 
 
+
 </div>
+
 
 
 ))}
 
 
 
+
 </div>
+
 
 
 </section>
@@ -1547,6 +1773,7 @@ text-slate-600
 type="application/ld+json"
 
 dangerouslySetInnerHTML={{
+
 
 __html:JSON.stringify({
 
@@ -1589,7 +1816,7 @@ text:
 "Question",
 
 "name":
-`How does NorthSky review ${category.name} tools?`,
+`How does NorthSky review ${category.name} software?`,
 
 acceptedAnswer:{
 
@@ -1602,7 +1829,6 @@ text:
 }
 
 }
-
 
 
 ]
@@ -1658,10 +1884,11 @@ text-sm
 text-slate-600
 ">
 
-NorthSky Reviews creates independent rankings,
-reviews, and buying guides. Some links may be
-affiliate links, meaning we may earn a commission
-at no additional cost to you.
+NorthSky Reviews creates independent
+technology rankings, reviews, and buying
+guides. Some links may be affiliate links,
+meaning we may earn a commission at no
+additional cost to you.
 
 </p>
 
