@@ -1,139 +1,112 @@
 import Link from "next/link";
-import { categories } from "@/app/data/tools";
+
+import { categories, tools } from "@/app/data/tools";
+
+
+const siteUrl =
+"https://northsky-reviews.vercel.app";
+
+
 
 export const metadata = {
-  title:
-    "Software Categories | AI Tools, SaaS, Automation & Technology",
 
-  description:
-    "Explore NorthSky Reviews software categories including AI tools, automation platforms, productivity software, cybersecurity, business tools, and developer solutions.",
+title:
+"Best Software Categories 2026 | AI Tools, VPNs, Automation & More | NorthSky Reviews",
 
-  keywords: [
-    "AI categories",
-    "software categories",
-    "AI writing tools",
-    "AI coding tools",
-    "automation software",
-    "SaaS tools",
-    "technology solutions",
-  ],
-
-  alternates: {
-    canonical:
-      "https://northsky-reviews.vercel.app/categories",
-  },
-};
-
-
-export default function CategoriesPage() {
-
-
-const defaultCategories = [
-
-{
-name:"AI Writing Tools",
-slug:"ai-writing",
-icon:"✍️",
 description:
-"Explore AI writing assistants, content generators, and copywriting software."
-},
+"Explore NorthSky Reviews technology categories including AI software, VPN services, automation tools, website builders, travel technology, and business software.",
 
-{
-name:"AI Coding Tools",
-slug:"ai-coding",
-icon:"💻",
-description:
-"Discover AI coding assistants, developer tools, and programming platforms."
-},
+keywords:[
 
-{
-name:"AI Image Generators",
-slug:"ai-image",
-icon:"🎨",
-description:
-"Compare AI image creation platforms and creative design tools."
-},
+"best software categories 2026",
+"AI tools",
+"VPN reviews",
+"automation software",
+"technology reviews"
 
-{
-name:"AI Video Tools",
-slug:"ai-video",
-icon:"🎬",
-description:
-"Find AI video editors, generators, and content creation software."
-},
+],
 
-{
-name:"AI Automation",
-slug:"automation",
-icon:"⚙️",
-description:
-"Review workflow automation tools that save time and improve productivity."
-},
+alternates:{
 
-{
-name:"Business Software",
-slug:"business-software",
-icon:"🏢",
-description:
-"Explore CRM, analytics, communication, and business platforms."
-},
+canonical:
+`${siteUrl}/categories`
 
-{
-name:"Cybersecurity",
-slug:"cybersecurity",
-icon:"🔐",
-description:
-"Discover security software, privacy tools, and protection solutions."
-},
-
-{
-name:"Productivity Tools",
-slug:"productivity",
-icon:"🚀",
-description:
-"Find software that helps teams and individuals work smarter."
-},
-
-{
-name:"Developer Tools",
-slug:"developer-tools",
-icon:"🧑‍💻",
-description:
-"Explore APIs, developer platforms, and engineering software."
 }
 
-];
-
-
-const displayCategories =
-categories?.length
-? categories
-: defaultCategories;
+};
 
 
 
-const schema = {
 
-"@context":"https://schema.org",
 
-"@type":"CollectionPage",
+export default function CategoriesPage(){
+
+
+
+const categorySchema = {
+
+
+"@context":
+"https://schema.org",
+
+
+"@type":
+"CollectionPage",
+
+
 
 "name":
-"NorthSky Software Categories",
+"NorthSky Reviews Categories",
+
+
 
 "description":
-"Browse AI tools, software categories, and technology solutions.",
+"Browse software categories including AI tools, VPNs, automation, and technology products.",
+
+
 
 "url":
-"https://northsky-reviews.vercel.app/categories"
+`${siteUrl}/categories`,
+
+
+
+"hasPart":
+
+categories.map(category=>(
+
+{
+
+"@type":
+"CollectionPage",
+
+"name":
+category.name,
+
+"url":
+`${siteUrl}/categories/${category.slug}`
+
+}
+
+))
+
 
 };
+
+
+
 
 
 
 return (
 
-<main className="min-h-screen bg-white text-slate-900">
+<main className="
+min-h-screen
+bg-white
+text-slate-900
+">
+
+
+
 
 
 <script
@@ -142,7 +115,8 @@ type="application/ld+json"
 
 dangerouslySetInnerHTML={{
 
-__html:JSON.stringify(schema)
+__html:
+JSON.stringify(categorySchema)
 
 }}
 
@@ -150,35 +124,142 @@ __html:JSON.stringify(schema)
 
 
 
-<section className="bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-900 px-6 py-24 text-center text-white">
 
 
-<div className="mx-auto max-w-5xl">
 
 
-<span className="rounded-full bg-blue-500/20 px-5 py-2 text-sm font-bold text-blue-300">
+{/* HERO */}
 
-📚 Software Directory
+
+
+<section className="
+bg-gradient-to-br
+from-slate-950
+via-blue-950
+to-cyan-950
+px-6
+py-24
+text-center
+text-white
+">
+
+
+<div className="
+mx-auto
+max-w-6xl
+">
+
+
+<span className="
+rounded-full
+bg-cyan-500/20
+px-5
+py-2
+text-sm
+font-bold
+text-cyan-300
+">
+
+NorthSky Software Directory
 
 </span>
 
 
-<h1 className="mt-8 text-5xl font-black md:text-7xl">
 
-Explore Software Categories
+
+
+<h1 className="
+mt-8
+text-5xl
+font-black
+md:text-7xl
+">
+
+Explore Technology Categories
 
 </h1>
 
 
-<p className="mx-auto mt-8 max-w-3xl text-xl text-slate-300">
 
-Browse thousands of technology solutions organized by category.
-Find the right AI tools, SaaS platforms, and software for your needs.
+
+
+<p className="
+mx-auto
+mt-6
+max-w-3xl
+text-xl
+text-slate-300
+">
+
+Discover expert reviews, comparisons,
+and rankings for the world's leading
+software and digital tools.
 
 </p>
 
 
+
+
+
+<div className="
+mt-10
+flex
+flex-wrap
+justify-center
+gap-5
+">
+
+
+<Link
+
+href="/all-tools"
+
+className="
+rounded-xl
+bg-cyan-500
+px-8
+py-4
+font-black
+text-slate-950
+hover:bg-cyan-400
+"
+
+>
+
+Browse All Tools
+
+</Link>
+
+
+
+
+<Link
+
+href="/reviews"
+
+className="
+rounded-xl
+border
+border-white/30
+px-8
+py-4
+font-bold
+hover:bg-white/10
+"
+
+>
+
+Read Reviews
+
+</Link>
+
+
 </div>
+
+
+
+</div>
+
 
 </section>
 
@@ -186,13 +267,32 @@ Find the right AI tools, SaaS platforms, and software for your needs.
 
 
 
-<section className="px-6 py-24">
 
 
-<div className="mx-auto max-w-7xl">
 
 
-<h2 className="text-center text-4xl font-black">
+{/* CATEGORY GRID */}
+
+
+
+<section className="
+px-6
+py-20
+">
+
+
+<div className="
+mx-auto
+max-w-7xl
+">
+
+
+
+<h2 className="
+text-center
+text-4xl
+font-black
+">
 
 Browse Categories
 
@@ -200,11 +300,49 @@ Browse Categories
 
 
 
-<div className="mt-14 grid gap-8 md:grid-cols-3">
+<p className="
+mt-4
+text-center
+text-slate-600
+">
+
+Find the best tools for business,
+productivity, security, and technology.
+
+</p>
 
 
-{displayCategories.map((category)=>(
 
+
+
+
+
+<div className="
+mt-12
+grid
+gap-8
+md:grid-cols-3
+">
+
+
+
+
+
+{categories.map((category)=>{
+
+
+const categoryTools =
+
+tools.filter(
+
+tool =>
+tool.category === category.name
+
+);
+
+
+
+return (
 
 <Link
 
@@ -212,20 +350,36 @@ key={category.slug}
 
 href={`/categories/${category.slug}`}
 
-className="group rounded-3xl border bg-white p-8 shadow-sm transition hover:-translate-y-2 hover:shadow-xl"
+className="
+group
+rounded-3xl
+border
+p-8
+transition
+hover:-translate-y-2
+hover:shadow-xl
+hover:border-cyan-400
+"
 
 >
 
 
-<div className="text-5xl">
+<div className="
+text-5xl
+">
 
-{category.icon || "🤖"}
+{category.icon || "🚀"}
 
 </div>
 
 
 
-<h3 className="mt-6 text-2xl font-black">
+
+<h3 className="
+mt-6
+text-2xl
+font-black
+">
 
 {category.name}
 
@@ -233,26 +387,208 @@ className="group rounded-3xl border bg-white p-8 shadow-sm transition hover:-tra
 
 
 
-<p className="mt-4 text-slate-600">
+
+
+<p className="
+mt-4
+text-slate-600
+">
 
 {category.description ||
-"Explore the best software and technology tools."}
+
+`Explore the best ${category.name} tools, reviews, and comparisons.`
+
+}
 
 </p>
 
 
 
-<span className="mt-8 block font-bold text-blue-600">
 
-Explore Tools →
+
+<div className="
+mt-6
+flex
+justify-between
+rounded-xl
+bg-slate-100
+px-4
+py-3
+font-bold
+">
+
+
+<span>
+
+Tools
 
 </span>
+
+
+
+<span className="
+text-cyan-600
+">
+
+{categoryTools.length}
+
+</span>
+
+
+</div>
+
+
+
+
+
+<div className="
+mt-5
+font-bold
+text-cyan-600
+group-hover:underline
+">
+
+Explore Category →
+
+</div>
+
+
 
 
 </Link>
 
 
+);
+
+
+})}
+
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+{/* TRUST SECTION */}
+
+
+
+<section className="
+bg-slate-50
+px-6
+py-20
+">
+
+
+<div className="
+mx-auto
+max-w-6xl
+">
+
+
+<h2 className="
+text-center
+text-4xl
+font-black
+">
+
+Why NorthSky Reviews?
+
+</h2>
+
+
+
+
+
+<div className="
+mt-12
+grid
+gap-6
+md:grid-cols-4
+">
+
+
+
+{[
+
+[
+"Independent Testing",
+"Research-based reviews and rankings."
+],
+
+
+[
+"Detailed Comparisons",
+"Compare features, pricing, and value."
+],
+
+
+[
+"Updated Rankings",
+"Technology changes. We update."
+],
+
+
+[
+"Expert Research",
+"Helping users make smarter decisions."
+]
+
+].map(([title,text])=>(
+
+
+<div
+
+key={title}
+
+className="
+rounded-3xl
+bg-white
+p-7
+shadow-sm
+"
+
+>
+
+
+<h3 className="
+font-black
+">
+
+{title}
+
+</h3>
+
+
+<p className="
+mt-3
+text-sm
+text-slate-600
+">
+
+{text}
+
+</p>
+
+
+</div>
+
+
 ))}
+
 
 
 </div>
@@ -267,26 +603,79 @@ Explore Tools →
 
 
 
-<section className="bg-slate-50 px-6 py-20">
 
 
-<div className="mx-auto max-w-5xl text-center">
 
 
-<h2 className="text-4xl font-black">
+{/* FINAL CTA */}
+
+
+
+<section className="
+px-6
+py-24
+">
+
+
+<div className="
+mx-auto
+max-w-5xl
+rounded-3xl
+bg-slate-950
+p-12
+text-center
+text-white
+">
+
+
+<h2 className="
+text-4xl
+font-black
+">
 
 Find The Right Technology
 
 </h2>
 
 
-<p className="mt-6 text-lg text-slate-600">
 
-Whether you need AI automation, business software,
-creative tools, or developer solutions, NorthSky Reviews
-helps you discover the best platforms available.
+
+<p className="
+mt-4
+text-slate-300
+">
+
+Explore reviews, guides,
+and comparisons from NorthSky.
 
 </p>
+
+
+
+
+
+<Link
+
+href="/guides"
+
+className="
+mt-8
+inline-block
+rounded-xl
+bg-cyan-500
+px-8
+py-4
+font-black
+text-slate-950
+"
+
+>
+
+View Buying Guides →
+
+</Link>
+
+
 
 
 </div>
@@ -296,32 +685,6 @@ helps you discover the best platforms available.
 
 
 
-
-
-<section className="bg-blue-600 px-6 py-20 text-center text-white">
-
-
-<h2 className="text-4xl font-black">
-
-Discover Your Next Tool
-
-</h2>
-
-
-<Link
-
-href="/best"
-
-className="mt-8 inline-block rounded-xl bg-white px-8 py-4 font-bold text-blue-600"
-
->
-
-View Best Software →
-
-</Link>
-
-
-</section>
 
 
 
