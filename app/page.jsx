@@ -1,3 +1,5 @@
+import dynamic from "next/dynamic";
+
 import Hero from "@/components/home/Hero";
 import Stats from "@/components/home/Stats";
 import TrustSection from "@/components/home/TrustSection";
@@ -5,12 +7,27 @@ import EditorPicks from "@/components/home/EditorPicks";
 import Categories from "@/components/home/Categories";
 import AIHub from "@/components/home/AIHub";
 import ToolGrid from "@/components/home/ToolGrid";
-import Deals from "@/components/home/Deals";
 import Comparisons from "@/components/home/Comparisons";
 import Guides from "@/components/home/Guides";
-import TravelHub from "@/components/home/TravelHub";
 import Newsletter from "@/components/home/Newsletter";
 import Footer from "@/components/home/Footer";
+
+
+// Lazy load larger sections
+const Deals = dynamic(
+  () => import("@/components/home/Deals")
+);
+
+
+const TravelHub = dynamic(
+  () => import("@/components/home/TravelHub")
+);
+
+
+const LatestReviews = dynamic(
+  () => import("@/components/home/LatestReviews")
+);
+
 
 
 export const metadata = {
@@ -18,19 +35,23 @@ export const metadata = {
   title:
     "NorthSky Reviews | Best AI Tools, Software & Technology Reviews 2026",
 
+
   description:
-    "Discover the best AI tools, software, VPNs, laptops, travel technology and digital products. Compare reviews, ratings, features and pricing with NorthSky Reviews.",
+    "Discover the best AI tools, software, VPNs, laptops, travel technology and digital products. Compare expert reviews, ratings, features and pricing with NorthSky Reviews.",
 
 
   keywords:[
 
     "best AI tools 2026",
     "AI software reviews",
-    "software comparisons",
+    "AI productivity tools",
+    "AI automation tools",
+    "ChatGPT alternatives",
     "best VPN Canada",
     "best laptops 2026",
-    "travel technology",
-    "AI productivity tools"
+    "software comparisons",
+    "technology reviews",
+    "travel technology"
 
   ],
 
@@ -40,9 +61,34 @@ export const metadata = {
     canonical:
     "https://northsky-reviews.vercel.app"
 
+  },
+
+
+  openGraph:{
+
+    title:
+    "NorthSky Reviews | AI Tools, Software & Technology Reviews",
+
+
+    description:
+    "Independent reviews, comparisons and buying guides for AI tools, software and technology.",
+
+
+    url:
+    "https://northsky-reviews.vercel.app",
+
+
+    siteName:
+    "NorthSky Reviews",
+
+
+    type:
+    "website"
+
   }
 
 };
+
 
 
 
@@ -51,7 +97,65 @@ export default function HomePage(){
 
 return (
 
-<main className="min-h-screen bg-white text-slate-900">
+<main className="
+min-h-screen
+bg-white
+text-slate-900
+">
+
+
+{/* Website Schema */}
+
+<script
+
+type="application/ld+json"
+
+dangerouslySetInnerHTML={{
+
+__html:JSON.stringify({
+
+"@context":
+"https://schema.org",
+
+
+"@type":
+"WebSite",
+
+
+"name":
+"NorthSky Reviews",
+
+
+"url":
+"https://northsky-reviews.vercel.app",
+
+
+"description":
+"AI tools, software reviews, comparisons and technology buying guides.",
+
+
+"potentialAction":{
+
+"@type":
+"SearchAction",
+
+
+"target":
+"https://northsky-reviews.vercel.app/search?q={search_term_string}",
+
+
+"query-input":
+"required name=search_term_string"
+
+}
+
+})
+
+}}
+
+/>
+
+
 
 
 <Hero />
@@ -66,13 +170,16 @@ return (
 <EditorPicks />
 
 
-<Categories />
-
-
 <AIHub />
 
 
+<Categories />
+
+
 <ToolGrid />
+
+
+<LatestReviews />
 
 
 <Deals />
@@ -96,6 +203,5 @@ return (
 </main>
 
 );
-
 
 }
