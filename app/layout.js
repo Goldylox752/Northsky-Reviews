@@ -1,24 +1,27 @@
 import "./globals.css";
 
 export const metadata = {
-  metadataBase: new URL("https://your-domain.com"),
+  metadataBase: new URL("https://northsky-reviews.vercel.app"),
 
   title: {
-    default: "NorthSky | AI, Software & Technology Solutions",
-    template: "%s | NorthSky",
+    default:
+      "NorthSky Reviews | AI Tools, Software & Technology Reviews",
+    template:
+      "%s | NorthSky Reviews",
   },
 
   description:
-    "NorthSky builds AI-powered software, technology platforms, reviews, marketplaces, and digital solutions.",
+    "Discover the best AI tools, software, automation platforms, and technology products. Compare reviews, rankings, and deals with NorthSky Reviews.",
 
   keywords: [
-    "NorthSky",
-    "AI software",
-    "technology solutions",
-    "SaaS",
-    "automation",
-    "software reviews",
-    "digital products",
+    "AI tools",
+    "AI software reviews",
+    "best AI tools 2026",
+    "software comparisons",
+    "technology reviews",
+    "automation tools",
+    "SaaS reviews",
+    "NorthSky Reviews",
   ],
 
   verification: {
@@ -26,20 +29,27 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "NorthSky | AI, Software & Technology Solutions",
+    title:
+      "NorthSky Reviews | AI Tools, Software & Technology Reviews",
     description:
-      "Explore AI tools, software solutions, automation platforms, and technology products built by NorthSky.",
-    url: "https://your-domain.com",
-    siteName: "NorthSky",
-    locale: "en_CA",
-    type: "website",
+      "Compare AI software, automation tools, and technology products with expert reviews and rankings.",
+    url:
+      "https://northsky-reviews.vercel.app",
+    siteName:
+      "NorthSky Reviews",
+    locale:
+      "en_CA",
+    type:
+      "website",
   },
 
   twitter: {
-    card: "summary_large_image",
-    title: "NorthSky | AI & Technology Solutions",
+    card:
+      "summary_large_image",
+    title:
+      "NorthSky Reviews | AI Tools & Software Reviews",
     description:
-      "AI software, automation, reviews, and technology platforms.",
+      "Find and compare the best AI tools, software, and technology products.",
   },
 
   robots: {
@@ -52,10 +62,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* Replace with verification code if not using metadata.verification */}
         <meta
-          name="google-site-verification"
-          content="YOUR_GOOGLE_VERIFICATION_CODE"
+          name="fo-verify"
+          content="b2dc6c38-a3b8-44d3-b6d1-9d5389957786"
         />
       </head>
 
